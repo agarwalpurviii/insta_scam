@@ -125,6 +125,60 @@
       "description": "Screenshot of a hostile DM exchange with a scammer refusing a refund.",
       "imageUrl": "https://picsum.photos/seed/ev21/400/200",
       "imageHint": "hostile conversation"
+    },
+    {
+      "id": "sneaker1",
+      "description": "Image of limited edition sneakers advertised by a scammer.",
+      "imageUrl": "https://picsum.photos/seed/sneaker1/400/200",
+      "imageHint": "sneakers product"
+    },
+    {
+      "id": "sneaker2",
+      "description": "Image of counterfeit sneakers received from a scammer.",
+      "imageUrl": "https://picsum.photos/seed/sneaker2/400/200",
+      "imageHint": "counterfeit sneakers"
+    },
+    {
+      "id": "iphone1",
+      "description": "Image of a fake iPhone advertisement.",
+      "imageUrl": "https://picsum.photos/seed/iphone1/400/200",
+      "imageHint": "fake iphone"
+    },
+    {
+      "id": "jewelry1",
+      "description": "Image of a cheap plastic ring passed off as sterling silver.",
+      "imageUrl": "https://picsum.photos/seed/jewelry1/400/200",
+      "imageHint": "cheap jewelry"
+    },
+    {
+      "id": "pet1",
+      "description": "Image of a custom dog bed that was never delivered.",
+      "imageUrl": "https://picsum.photos/seed/pet1/400/200",
+      "imageHint": "dog bed"
+    },
+    {
+      "id": "pet2",
+      "description": "Image of a cat tree from a legitimate store, used in a scam ad.",
+      "imageUrl": "https://picsum.photos/seed/pet2/400/200",
+      "imageHint": "cat tree"
+    },
+    {
+      "id": "finance1",
+      "description": "Image of a fake crypto investment advertisement.",
+      "imageUrl": "https://picsum.photos/seed/finance1/400/200",
+      "imageHint": "crypto ad"
+    },
+    {
+      "id": "health1",
+      "description": "Image of a fake miracle weight loss tea.",
+      "imageUrl": "https://picsum.photos/seed/health1/400/200",
+      "imageHint": "weightloss tea"
+    },
+    {
+      "id": "home1",
+      "description": "Image of a poorly made armchair from a scammer.",
+      "imageUrl": "https://picsum.photos/seed/home1/400/200",
+      "imageHint": "broken armchair"
     }
   ]
 }
