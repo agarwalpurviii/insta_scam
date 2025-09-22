@@ -15,13 +15,16 @@ export function DirectoryTabs({ accounts }: DirectoryTabsProps) {
     'Electronics',
     'Jewelry & Accessories',
     'Pets',
+    'Financial Scams',
+    'Home Goods',
+    'Health & Beauty',
     'Other',
   ];
 
   return (
     <Tabs defaultValue="All" className="w-full">
       <div className="flex justify-center mb-8">
-        <TabsList className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6">
+        <TabsList className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-9">
           {categories.map((category) => (
             <TabsTrigger key={category} value={category}>
               {category}

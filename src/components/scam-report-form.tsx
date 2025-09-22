@@ -35,6 +35,9 @@ function CategorySelect() {
                 <SelectItem value="electronics">Electronics</SelectItem>
                 <SelectItem value="jewelry">Jewelry & Accessories</SelectItem>
                 <SelectItem value="pets">Pets</SelectItem>
+                <SelectItem value="financial">Financial Scams</SelectItem>
+                <SelectItem value="home_goods">Home Goods</SelectItem>
+                <SelectItem value="health_beauty">Health & Beauty</SelectItem>
                 <SelectItem value="other">Other</SelectItem>
             </SelectContent>
         </Select>
@@ -103,7 +106,7 @@ export function ScamReportForm() {
                 <CardContent className="space-y-6">
                     <div className="space-y-2">
                         <Label htmlFor="instagramId">Instagram Seller ID</Label>
-                        <Input id="instagramId" name="instagramId" placeholder="e.g., fraudulent_seller" required />
+                        <Input id="instagramId" name="instagramId" placeholder="fraudulent_seller" required />
                     </div>
 
                     <div className="space-y-2">
@@ -133,7 +136,7 @@ export function ScamReportForm() {
                     </div>
                     
                     <div className="space-y-2">
-                        <Label htmlFor="evidence">Evidence (Optional)</Label>
+                        <Label htmlFor="evidence">Evidence</Label>
                         <div className="relative flex items-center justify-center w-full">
                            {!imagePreview ? (
                                 <label htmlFor="evidence-file" className="flex flex-col items-center justify-center w-full h-48 border-2 border-dashed rounded-lg cursor-pointer bg-card hover:bg-muted">
