@@ -2,6 +2,7 @@
 
 import { analyzeScamReports, type AnalyzeScamReportsOutput } from "@/ai/flows/analyze-scam-reports-for-patterns";
 import { scamReportSchema } from './schema';
+import { z } from "zod";
 
 export type ScamReportFormState = {
   message: string;
@@ -9,6 +10,13 @@ export type ScamReportFormState = {
   reasoning: string | null;
   success: boolean;
 }
+
+async function toDataURI(file: File): Promise<string> {
+    const arrayBuffer = await file.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
+    return `data:${file.type};base64,${buffer.toString('base64')}`;
+}
+
 
 export async function submitScamReport(
     prevState: ScamReportFormState,
@@ -31,10 +39,18 @@ export async function submitScamReport(
     }
     
     const { instagramId, category, scamDetails, evidence } = validatedFields.data;
-    const reportDetails = `Instagram ID: ${instagramId}\nCategory: ${category}\nDetails: ${scamDetails}\nEvidence: ${evidence || 'None'}`;
+    const reportDetails = `Instagram ID: ${instagramId}\nCategory: ${category}\nDetails: ${scamDetails}`;
+    
+    let evidenceImage: string | undefined;
+    if (evidence && evidence.size > 0) {
+        evidenceImage = await toDataURI(evidence);
+    }
 
     try {
-        const aiResult: AnalyzeScamReportsOutput = await analyzeScamReports({ reportDetails });
+        const aiResult: AnalyzeScamReportsOutput = await analyzeScamReports({ 
+            reportDetails,
+            evidenceImage,
+        });
 
         return {
             message: "Report submitted successfully for analysis.",
