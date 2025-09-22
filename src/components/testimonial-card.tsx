@@ -3,7 +3,6 @@ import type { Testimonial } from '@/lib/types';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { User, Calendar } from 'lucide-react';
 import { formatDate } from '@/lib/utils';
-import { EvidencePhoto } from './evidence-photo';
 
 type TestimonialCardProps = {
   testimonial: Testimonial;
@@ -25,17 +24,7 @@ export function TestimonialCard({ testimonial }: TestimonialCardProps) {
         </div>
       </CardHeader>
       <CardContent>
-        <p className="whitespace-pre-wrap mb-6">{testimonial.content}</p>
-        {testimonial.evidenceLinks && testimonial.evidenceLinks.length > 0 && (
-          <div>
-            <h4 className="font-semibold mb-4 text-foreground">Evidence:</h4>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-              {testimonial.evidenceLinks.map((evidenceId) => (
-                <EvidencePhoto key={evidenceId} evidenceId={evidenceId} />
-              ))}
-            </div>
-          </div>
-        )}
+        <p className="whitespace-pre-wrap">{testimonial.content}</p>
       </CardContent>
     </Card>
   );
