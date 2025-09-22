@@ -83,6 +83,57 @@ export const scamAccounts: ScamAccount[] = [
         },
     ],
   },
+  {
+    id: '5',
+    instagramId: '@get_rich_quick_guru',
+    category: 'Financial Scams',
+    status: 'verified_scam',
+    reportCount: 56,
+    lastReported: '2024-08-01',
+    testimonials: [
+      {
+        id: 't5-1',
+        author: 'SmartInvest',
+        date: '2024-08-01',
+        content: 'Promised 10x returns on a "guaranteed" investment. Took my money and then blocked me. The whole profile is fake.',
+        evidenceLinks: ['https://picsum.photos/seed/ev6/400/200'],
+      },
+    ],
+  },
+  {
+    id: '6',
+    instagramId: '@miracle_health_tonic',
+    category: 'Health & Beauty',
+    status: 'under_investigation',
+    reportCount: 8,
+    lastReported: '2024-07-31',
+    testimonials: [
+      {
+        id: 't6-1',
+        author: 'WellnessWatcher',
+        date: '2024-07-31',
+        content: 'Selling a "miracle cure" that is just colored water. Made me sick. Do not buy from them.',
+        evidenceLinks: ['https://picsum.photos/seed/ev7/400/200'],
+      },
+    ],
+  },
+  {
+    id: '7',
+    instagramId: '@luxury_decor_deals',
+    category: 'Home Goods',
+    status: 'verified_scam',
+    reportCount: 19,
+    lastReported: '2024-07-29',
+    testimonials: [
+      {
+        id: 't7-1',
+        author: 'HomeBody',
+        date: '2024-07-29',
+        content: 'The furniture I received looked nothing like the pictures and fell apart in a week. They are drop-shipping cheap items.',
+        evidenceLinks: ['https://picsum.photos/seed/ev8/400/200'],
+      },
+    ],
+  },
 ];
 
 export const getScamAccountById = (id: string): ScamAccount | undefined => {

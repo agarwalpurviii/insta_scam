@@ -29,6 +29,24 @@
       "description": "Evidence screenshot showing a stolen product photo.",
       "imageUrl": "https://picsum.photos/seed/ev5/400/200",
       "imageHint": "stolen photo"
+    },
+    {
+      "id": "ev6",
+      "description": "Screenshot of a fake investment guru's Instagram profile.",
+      "imageUrl": "https://picsum.photos/seed/ev6/400/200",
+      "imageHint": "instagram profile"
+    },
+    {
+      "id": "ev7",
+      "description": "Screenshot of a miracle health tonic seller's Instagram handle.",
+      "imageUrl": "https://picsum.photos/seed/ev7/400/200",
+      "imageHint": "instagram handle"
+    },
+    {
+      "id": "ev8",
+      "description": "Screenshot of a luxury decor scammer's Instagram page.",
+      "imageUrl": "https://picsum.photos/seed/ev8/400/200",
+      "imageHint": "instagram page"
     }
   ]
 }
