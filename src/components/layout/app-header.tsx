@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Shield, Search, FileText, Users } from 'lucide-react';
+import { Shield, Search, FileText, Users, Image } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 
 export function AppHeader() {
@@ -14,6 +14,11 @@ export function AppHeader() {
           <Button variant="ghost" asChild>
             <Link href="/search" className="flex items-center gap-2">
                 <Search className="h-4 w-4" /> Search
+            </Link>
+          </Button>
+           <Button variant="ghost" asChild>
+            <Link href="/image-search" className="flex items-center gap-2">
+                <Image className="h-4 w-4" /> Image Search
             </Link>
           </Button>
           <Button variant="ghost" asChild>
