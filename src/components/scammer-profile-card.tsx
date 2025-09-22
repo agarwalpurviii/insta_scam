@@ -14,7 +14,7 @@ export function ScammerProfileCard({ account }: ScamAccountProps) {
 
   return (
     <Card className="bg-card/60 border border-border/40 p-4 shadow-md hover:border-primary/50 transition-all duration-300">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <div className="md:col-span-3">
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-2">
               <h3 className="text-xl font-bold font-headline">{account.instagramId}</h3>
