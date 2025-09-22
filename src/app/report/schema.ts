@@ -26,14 +26,12 @@ export const scamReportSchema = z.object({
 
   evidence: z
     .any()
-    .refine((file) => !file || file instanceof File, "Invalid file format.")
-    .refine((file) => !file || file.size === 0 || file.size <= MAX_FILE_SIZE, `Max file size is 5MB.`)
+    .refine((file): file is File => file instanceof File && file.size > 0, "Evidence is required. Please upload a file.")
+    .refine((file) => file.size <= MAX_FILE_SIZE, `Max file size is 5MB.`)
     .refine(
-      (file) => !file || file.size === 0 || ACCEPTED_IMAGE_TYPES.includes(file.type),
+      (file) => ACCEPTED_IMAGE_TYPES.includes(file.type),
       ".jpg, .jpeg, .png and .webp files are accepted."
-    )
-    .transform(file => (file && file.size > 0) ? file : undefined)
-    .optional(),
+    ),
 
   reporterName: z.string().optional(),
   reporterEmail: z.string().email({ message: "Please enter a valid email address." }).optional().or(z.literal('')),

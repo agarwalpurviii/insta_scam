@@ -147,30 +147,30 @@ export function ScamReportForm() {
 
                     {/* Evidence Section */}
                     <div className="space-y-4">
-                        <h3 className="text-lg font-semibold font-headline">Evidence (Optional but Recommended)</h3>
+                        <h3 className="text-lg font-semibold font-headline">Evidence*</h3>
                          <div className="relative flex items-center justify-center w-full">
                             <label htmlFor="evidence-file" className="flex flex-col items-center justify-center w-full h-48 border-2 border-dashed rounded-lg cursor-pointer bg-card hover:bg-muted">
                                 <div className="flex flex-col items-center justify-center pt-5 pb-6 text-center">
                                     <UploadCloud className="w-8 h-8 mb-4 text-muted-foreground" />
                                     <p className="mb-2 text-sm text-muted-foreground">Upload screenshots, chat logs, payment receipts, or other evidence</p>
-                                    <Button type="button" size="sm" variant="secondary" className="pointer-events-none mt-2">Choose Files</Button>
-                                    <p className="text-xs text-muted-foreground mt-4">Max 1 file, 5MB. JPG, PNG supported.</p>
+                                    <Button type="button" size="sm" variant="secondary" className="pointer-events-none mt-2">Choose File</Button>
+                                    <p className="text-xs text-muted-foreground mt-4">Required. Max 1 file, 5MB. JPG, PNG supported.</p>
                                 </div>
-                                <Input id="evidence-file" ref={fileInputRef} name="evidence" type="file" className="hidden" accept="image/png, image/jpeg, image/webp" />
+                                <Input id="evidence-file" ref={fileInputRef} name="evidence" type="file" className="hidden" accept="image/png, image/jpeg, image/webp" required />
                             </label>
                         </div>
                     </div>
 
                     {/* Contact Information Section */}
                     <div className="space-y-4">
-                        <h3 className="text-lg font-semibold font-headline">Your Contact Information</h3>
+                        <h3 className="text-lg font-semibold font-headline">Your Contact Information (Optional)</h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="space-y-2">
-                                <Label htmlFor="reporterName">Your Name (Optional)</Label>
+                                <Label htmlFor="reporterName">Your Name</Label>
                                 <Input id="reporterName" name="reporterName" placeholder="Anonymous" />
                             </div>
                             <div className="space-y-2">
-                                <Label htmlFor="reporterEmail">Your Email (Optional)</Label>
+                                <Label htmlFor="reporterEmail">Your Email</Label>
                                 <Input id="reporterEmail" name="reporterEmail" type="email" placeholder="For follow-up questions" />
                             </div>
                         </div>
