@@ -4,7 +4,15 @@ const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
 
 export const scamReportSchema = z.object({
-  instagramId: z.string().min(1, { message: 'Instagram ID is required.' }).startsWith('@', { message: 'Instagram ID must start with @' }),
+  instagramId: z
+    .string()
+    .min(1, { message: 'Instagram ID is required.' })
+    .refine((value) => !value.startsWith('@'), {
+      message: 'Please enter the Instagram ID without the "@" symbol.',
+    })
+    .refine((value) => !/\s/.test(value), {
+      message: 'Instagram ID cannot contain spaces.',
+    }),
   category: z.string().min(1, { message: 'Please select a category.' }),
   scamDetails: z.string().min(20, { message: 'Please provide at least 20 characters of detail.' }),
   paymentDetails: z.string().optional(),

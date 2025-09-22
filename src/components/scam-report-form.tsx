@@ -103,7 +103,7 @@ export function ScamReportForm() {
                 <CardContent className="space-y-6">
                     <div className="space-y-2">
                         <Label htmlFor="instagramId">Instagram Seller ID</Label>
-                        <Input id="instagramId" name="instagramId" placeholder="@fraudulent_seller" required />
+                        <Input id="instagramId" name="instagramId" placeholder="fraudulent_seller" required />
                     </div>
 
                     <div className="space-y-2">

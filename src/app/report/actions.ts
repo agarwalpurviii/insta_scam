@@ -30,8 +30,9 @@ export async function submitScamReport(
     });
 
     if (!validatedFields.success) {
+        const errorMessages = validatedFields.error.issues.map(issue => issue.message).join(' ');
         return {
-            message: 'Invalid form data. Please check your inputs.',
+            message: errorMessages || 'Invalid form data. Please check your inputs.',
             isScam: null,
             reasoning: null,
             success: false,
@@ -39,7 +40,7 @@ export async function submitScamReport(
     }
     
     const { instagramId, category, scamDetails, paymentDetails, evidence } = validatedFields.data;
-    const reportDetails = `Instagram ID: ${instagramId}\nCategory: ${category}\nDetails: ${scamDetails}`;
+    const reportDetails = `Instagram ID: @${instagramId}\nCategory: ${category}\nDetails: ${scamDetails}`;
     
     const evidenceImage = await toDataURI(evidence);
 
