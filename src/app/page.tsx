@@ -6,6 +6,7 @@ import { HomeTestimonialCard } from '@/components/home-testimonial-card';
 import { homeTestimonials } from '@/lib/testimonials';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
+import { MiniProfileCard } from "@/components/mini-profile-card";
 
 export default function Home() {
   return (
@@ -18,6 +19,29 @@ export default function Home() {
             <UserPlus className="absolute text-green-500/80 w-28 h-28 -bottom-16 left-24 animate-float animation-delay-[4s]" />
             <AtSign className="absolute text-yellow-500/80 w-24 h-24 top-24 right-1/4 animate-float animation-delay-[8s]" />
             <Shield className="absolute text-primary/80 w-40 h-40 bottom-1/2 right-1/4 animate-float animation-delay-[10s]" />
+
+            {/* Animated Mini Profile Cards */}
+            <MiniProfileCard 
+              className="absolute top-1/4 left-1/4 animate-float animation-delay-[2s] opacity-80"
+              username="@fake_designer_deals"
+              followers="102k"
+              following="3"
+              isScam={true}
+            />
+             <MiniProfileCard 
+              className="absolute bottom-1/4 right-1/4 animate-float animation-delay-[7s] opacity-80"
+              username="@crypto_guru_scam"
+              followers="215k"
+              following="1"
+              isScam={true}
+            />
+             <MiniProfileCard 
+              className="absolute top-1/2 right-10 animate-float animation-delay-[5s] opacity-80"
+              username="@rare_sneaker_plug"
+              followers="88k"
+              following="12"
+              isScam={true}
+            />
         </div>
 
         <div className="container mx-auto text-center px-4 relative z-10">
