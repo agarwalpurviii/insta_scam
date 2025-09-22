@@ -186,7 +186,7 @@ type AddScamReportInput = {
     instagramId: string;
     category: string;
     scamDetails: string;
-    evidenceDataUri: string;
+    evidenceDataUri?: string;
 };
 
 export function addScamReport(report: AddScamReportInput) {
