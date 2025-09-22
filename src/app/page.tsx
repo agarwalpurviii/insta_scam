@@ -9,15 +9,15 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center bg-background overflow-x-hidden">
+    <div className="flex flex-col items-center bg-transparent overflow-x-hidden">
       <section className="relative w-full py-20 md:py-32 overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10">
-            <Heart className="absolute text-red-500 w-32 h-32 -top-16 -left-16 animate-float" />
-            <MessageCircle className="absolute text-sky-400 w-24 h-24 -bottom-24 right-8 animate-float animation-delay-3000" />
-            <Camera className="absolute text-purple-500 w-20 h-20 top-1/2 left-1/3 animate-float animation-delay-6000" />
-            <UserPlus className="absolute text-green-500 w-28 h-28 -bottom-16 left-24 animate-float animation-delay-[4s]" />
-            <AtSign className="absolute text-yellow-500 w-24 h-24 top-24 right-1/4 animate-float animation-delay-[8s]" />
-            <Shield className="absolute text-primary w-40 h-40 bottom-1/2 right-1/4 animate-float animation-delay-[10s]" />
+            <Heart className="absolute text-red-500/80 w-32 h-32 -top-16 -left-16 animate-float" />
+            <MessageCircle className="absolute text-sky-400/80 w-24 h-24 -bottom-24 right-8 animate-float animation-delay-3000" />
+            <Camera className="absolute text-purple-500/80 w-20 h-20 top-1/2 left-1/3 animate-float animation-delay-6000" />
+            <UserPlus className="absolute text-green-500/80 w-28 h-28 -bottom-16 left-24 animate-float animation-delay-[4s]" />
+            <AtSign className="absolute text-yellow-500/80 w-24 h-24 top-24 right-1/4 animate-float animation-delay-[8s]" />
+            <Shield className="absolute text-primary/80 w-40 h-40 bottom-1/2 right-1/4 animate-float animation-delay-[10s]" />
         </div>
 
         <div className="container mx-auto text-center px-4 relative z-10">
