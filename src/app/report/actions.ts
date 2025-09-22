@@ -42,7 +42,7 @@ export async function submitScamReport(
     const { instagramId, category, scamDetails, paymentDetails, evidence } = validatedFields.data;
     const reportDetails = `Instagram ID: @${instagramId}\nCategory: ${category}\nDetails: ${scamDetails}`;
     
-    const evidenceImage = await toDataURI(evidence);
+    const evidenceImage = evidence ? await toDataURI(evidence) : undefined;
 
     try {
         const aiResult: AnalyzeScamReportsOutput = await analyzeScamReports({ 

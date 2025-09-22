@@ -103,7 +103,7 @@ export function ScamReportForm() {
                 <CardContent className="space-y-6">
                     <div className="space-y-2">
                         <Label htmlFor="instagramId">Instagram Seller ID</Label>
-                        <Input id="instagramId" name="instagramId" placeholder="fraudulent_seller" required />
+                        <Input id="instagramId" name="instagramId" placeholder="e.g., fraudulent_seller" required />
                     </div>
 
                     <div className="space-y-2">
@@ -133,7 +133,7 @@ export function ScamReportForm() {
                     </div>
                     
                     <div className="space-y-2">
-                        <Label htmlFor="evidence">Evidence</Label>
+                        <Label htmlFor="evidence">Evidence (Optional)</Label>
                         <div className="relative flex items-center justify-center w-full">
                            {!imagePreview ? (
                                 <label htmlFor="evidence-file" className="flex flex-col items-center justify-center w-full h-48 border-2 border-dashed rounded-lg cursor-pointer bg-card hover:bg-muted">
@@ -142,7 +142,7 @@ export function ScamReportForm() {
                                         <p className="mb-2 text-sm text-muted-foreground"><span className="font-semibold">Click to upload</span> or drag and drop</p>
                                         <p className="text-xs text-muted-foreground">PNG, JPG, or WEBP (MAX. 5MB)</p>
                                     </div>
-                                    <Input id="evidence-file" ref={fileInputRef} name="evidence" type="file" className="hidden" onChange={handleFileChange} accept="image/png, image/jpeg, image/webp" required />
+                                    <Input id="evidence-file" ref={fileInputRef} name="evidence" type="file" className="hidden" onChange={handleFileChange} accept="image/png, image/jpeg, image/webp" />
                                 </label>
                             ) : (
                                 <div className="relative w-full h-48 rounded-lg overflow-hidden border">

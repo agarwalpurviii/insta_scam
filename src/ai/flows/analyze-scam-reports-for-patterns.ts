@@ -18,6 +18,7 @@ const AnalyzeScamReportsInputSchema = z.object({
   paymentDetails: z.string().optional().describe('Payment details if available (e.g., payment app, username).'),
   evidenceImage: z
     .string()
+    .optional()
     .describe(
       "An image of evidence, as a data URI that must include a MIME type and use Base64 encoding. Expected format: 'data:<mimetype>;base64,<encoded_data>'."
     ),
@@ -48,8 +49,10 @@ const prompt = ai.definePrompt({
 
   Report Details: {{{reportDetails}}}
   {{#if paymentDetails}}Payment Details: {{{paymentDetails}}}{{/if}}
+  {{#if evidenceImage}}
   Evidence Image:
   {{media url=evidenceImage}}
+  {{/if}}
   `,
 });
 

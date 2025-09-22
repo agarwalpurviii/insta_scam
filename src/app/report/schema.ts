@@ -17,11 +17,13 @@ export const scamReportSchema = z.object({
   scamDetails: z.string().min(20, { message: 'Please provide at least 20 characters of detail.' }),
   paymentDetails: z.string().optional(),
   evidence: z
-    .instanceof(File)
-    .refine((file) => file?.size > 0, "Evidence image is required.")
-    .refine((file) => file.size <= MAX_FILE_SIZE, `Max file size is 5MB.`)
+    .any()
+    .refine((file) => !file || file.size === 0 || file instanceof File, "Invalid file format.")
+    .refine((file) => !file || file.size === 0 || file.size <= MAX_FILE_SIZE, `Max file size is 5MB.`)
     .refine(
-      (file) => ACCEPTED_IMAGE_TYPES.includes(file.type),
+      (file) => !file || file.size === 0 || ACCEPTED_IMAGE_TYPES.includes(file.type),
       ".jpg, .jpeg, .png and .webp files are accepted."
-    ),
+    )
+    .transform(file => (file && file.size > 0) ? file : undefined)
+    .optional(),
 });
