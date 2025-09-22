@@ -3,6 +3,7 @@ import type { Testimonial } from '@/lib/types';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { User, Calendar } from 'lucide-react';
 import { formatDate } from '@/lib/utils';
+import { EvidenceGallery } from './evidence-gallery';
 
 type TestimonialCardProps = {
   testimonial: Testimonial;
@@ -25,6 +26,7 @@ export function TestimonialCard({ testimonial }: TestimonialCardProps) {
       </CardHeader>
       <CardContent>
         <p className="whitespace-pre-wrap">{testimonial.content}</p>
+        <EvidenceGallery evidenceIds={testimonial.evidenceLinks} />
       </CardContent>
     </Card>
   );
