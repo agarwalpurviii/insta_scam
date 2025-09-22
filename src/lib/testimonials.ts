@@ -23,7 +23,7 @@ export const homeTestimonials: HomeTestimonial[] = [
     name: 'Amanda T.',
     location: 'Ontario, Canada',
     rating: 5,
-    text: 'ScamGuard helped me identify a scammer before I fell victim. The detailed reports from other users were incredibly helpful. Highly recommend checking here first!',
+    text: 'InstaSafe helped me identify a scammer before I fell victim. The detailed reports from other users were incredibly helpful. Highly recommend checking here first!',
     statusType: 'saved',
     amount: 275,
   },

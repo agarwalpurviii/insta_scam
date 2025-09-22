@@ -8,7 +8,7 @@ export function AppHeader() {
       <div className="container mx-auto flex justify-between items-center">
         <Link href="/" className="flex items-center gap-2">
           <Shield className="h-8 w-8 text-primary" />
-          <span className="text-2xl font-bold tracking-tight font-headline">ScamGuard</span>
+          <span className="text-2xl font-bold tracking-tight font-headline">InstaSafe</span>
         </Link>
         <nav className="hidden md:flex items-center gap-6">
           <Button variant="ghost" asChild>

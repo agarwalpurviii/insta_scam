@@ -5,7 +5,7 @@ import { AppFooter } from '@/components/layout/app-footer';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'ScamGuard',
+  title: 'InstaSafe',
   description: 'Community-driven fraud detection for Instagram sellers.',
 };
 
