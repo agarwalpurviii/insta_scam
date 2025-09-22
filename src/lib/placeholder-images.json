@@ -101,6 +101,30 @@
       "description": "Photo showing the difference between the advertised furniture and the cheap item that arrived.",
       "imageUrl": "https://picsum.photos/seed/ev17/400/200",
       "imageHint": "product difference"
+    },
+    {
+      "id": "ev18",
+      "description": "Screenshot of DMs demanding more money for fake 'taxes' on an investment.",
+      "imageUrl": "https://picsum.photos/seed/ev18/400/200",
+      "imageHint": "dm screenshot"
+    },
+    {
+      "id": "ev19",
+      "description": "Screenshot of a fake pet supply website with stolen branding.",
+      "imageUrl": "https://picsum.photos/seed/ev19/400/200",
+      "imageHint": "fake website"
+    },
+    {
+      "id": "ev20",
+      "description": "Screenshot showing the scammer's profile has blocked the user.",
+      "imageUrl": "https://picsum.photos/seed/ev20/400/200",
+      "imageHint": "user blocked"
+    },
+    {
+      "id": "ev21",
+      "description": "Screenshot of a hostile DM exchange with a scammer refusing a refund.",
+      "imageUrl": "https://picsum.photos/seed/ev21/400/200",
+      "imageHint": "hostile conversation"
     }
   ]
 }
