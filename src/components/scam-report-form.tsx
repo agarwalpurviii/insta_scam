@@ -2,7 +2,7 @@
 
 import { useFormState, useFormStatus } from 'react-dom';
 import { submitScamReport, type ScamReportFormState } from '@/app/report/actions';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -21,6 +21,24 @@ function SubmitButton() {
             Analyze & Submit Report
         </Button>
     );
+}
+
+function CategorySelect() {
+    const [category, setCategory] = useState('');
+    return (
+        <Select name="category" required value={category} onValueChange={setCategory}>
+            <SelectTrigger id="category">
+                <SelectValue placeholder="Select a category" />
+            </SelectTrigger>
+            <SelectContent>
+                <SelectItem value="fashion">Fashion & Apparel</SelectItem>
+                <SelectItem value="electronics">Electronics</SelectItem>
+                <SelectItem value="jewelry">Jewelry & Accessories</SelectItem>
+                <SelectItem value="pets">Pets</SelectItem>
+                <SelectItem value="other">Other</SelectItem>
+            </SelectContent>
+        </Select>
+    )
 }
 
 export function ScamReportForm() {
@@ -66,18 +84,7 @@ export function ScamReportForm() {
 
                     <div className="space-y-2">
                         <Label htmlFor="category">Category of Scam</Label>
-                         <Select name="category" required>
-                            <SelectTrigger id="category">
-                                <SelectValue placeholder="Select a category" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                <SelectItem value="fashion">Fashion & Apparel</SelectItem>
-                                <SelectItem value="electronics">Electronics</SelectItem>
-                                <SelectItem value="jewelry">Jewelry & Accessories</SelectItem>
-                                <SelectItem value="pets">Pets</SelectItem>
-                                <SelectItem value="other">Other</SelectItem>
-                            </SelectContent>
-                        </Select>
+                         <CategorySelect />
                     </div>
                     
                      <div className="space-y-2">

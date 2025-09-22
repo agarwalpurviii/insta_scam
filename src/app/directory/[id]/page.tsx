@@ -6,6 +6,7 @@ import { AlertTriangle, CheckCircle2, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Separator } from '@/components/ui/separator';
+import { formatDate } from '@/lib/utils';
 
 type PageProps = {
   params: { id: string };
@@ -43,7 +44,7 @@ export default function ScamAccountDetailsPage({ params }: PageProps) {
         <div className="flex flex-wrap gap-x-6 gap-y-2 text-muted-foreground">
             <span>Category: <span className="font-semibold text-foreground">{account.category}</span></span>
             <span>Reports: <span className="font-semibold text-foreground">{account.reportCount}</span></span>
-            <span>Last Reported: <span className="font-semibold text-foreground">{new Date(account.lastReported).toLocaleDateString()}</span></span>
+            <span>Last Reported: <span className="font-semibold text-foreground">{formatDate(account.lastReported)}</span></span>
         </div>
       </div>
       

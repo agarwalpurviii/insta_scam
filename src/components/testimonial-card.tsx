@@ -2,6 +2,7 @@ import type { Testimonial } from '@/lib/types';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { User, Calendar } from 'lucide-react';
 import Image from 'next/image';
+import { formatDate } from '@/lib/utils';
 
 type TestimonialCardProps = {
   testimonial: Testimonial;
@@ -18,7 +19,7 @@ export function TestimonialCard({ testimonial }: TestimonialCardProps) {
             </div>
             <div className="flex items-center">
                 <Calendar className="mr-2 h-4 w-4" />
-                <span>Date: <span className="font-semibold text-foreground">{new Date(testimonial.date).toLocaleDateString()}</span></span>
+                <span>Date: <span className="font-semibold text-foreground">{formatDate(testimonial.date)}</span></span>
             </div>
         </div>
       </CardHeader>

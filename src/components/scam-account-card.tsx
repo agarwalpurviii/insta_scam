@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { AlertTriangle, CheckCircle2 } from 'lucide-react';
+import { formatDate } from '@/lib/utils';
 
 type ScamAccountCardProps = {
   account: ScamAccount;
@@ -27,7 +28,7 @@ export function ScamAccountCard({ account }: ScamAccountCardProps) {
       <CardContent className="flex-grow">
         <div className="text-sm text-muted-foreground space-y-2">
             <p>Reports: <span className="font-semibold text-foreground">{account.reportCount}</span></p>
-            <p>Last Reported: <span className="font-semibold text-foreground">{new Date(account.lastReported).toLocaleDateString()}</span></p>
+            <p>Last Reported: <span className="font-semibold text-foreground">{formatDate(account.lastReported)}</span></p>
         </div>
       </CardContent>
       <CardFooter>
