@@ -1,4 +1,4 @@
-import type { ScamAccount } from './types';
+import type { ScamAccount, Testimonial } from './types';
 
 export const scamAccounts: ScamAccount[] = [
   {
@@ -87,4 +87,44 @@ export const scamAccounts: ScamAccount[] = [
 
 export const getScamAccountById = (id: string): ScamAccount | undefined => {
   return scamAccounts.find(account => account.id === id);
+}
+
+type AddScamReportInput = {
+    instagramId: string;
+    category: string;
+    scamDetails: string;
+    evidenceDataUri: string;
+};
+
+export function addScamReport(report: AddScamReportInput) {
+    const existingAccount = scamAccounts.find(
+        (acc) => acc.instagramId.toLowerCase() === `@${report.instagramId.toLowerCase()}`
+    );
+
+    const currentDate = new Date().toISOString().split('T')[0];
+
+    const newTestimonial: Testimonial = {
+        id: `t-${Date.now()}`,
+        author: 'Anonymous', // In a real app, this would come from user session
+        date: currentDate,
+        content: report.scamDetails,
+        evidenceLinks: [report.evidenceDataUri],
+    };
+
+    if (existingAccount) {
+        existingAccount.reportCount++;
+        existingAccount.lastReported = currentDate;
+        existingAccount.testimonials.push(newTestimonial);
+    } else {
+        const newAccount: ScamAccount = {
+            id: `${scamAccounts.length + 1}`,
+            instagramId: `@${report.instagramId}`,
+            category: report.category,
+            status: 'under_investigation',
+            reportCount: 1,
+            lastReported: currentDate,
+            testimonials: [newTestimonial],
+        };
+        scamAccounts.unshift(newAccount);
+    }
 }

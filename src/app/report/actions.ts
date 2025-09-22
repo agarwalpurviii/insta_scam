@@ -1,6 +1,7 @@
 'use server';
 
 import { analyzeScamReports, type AnalyzeScamReportsInput, type AnalyzeScamReportsOutput } from "@/ai/flows/analyze-scam-reports-for-patterns";
+import { addScamReport } from "@/lib/data";
 import { scamReportSchema } from './schema';
 
 export type ScamReportFormState = {
@@ -40,22 +41,30 @@ export async function submitScamReport(
     }
     
     const { instagramId, category, scamDetails, paymentDetails, evidence } = validatedFields.data;
-    const reportDetails = `Instagram ID: @${instagramId}\nCategory: ${category}\nDetails: ${scamDetails}`;
-    
-    const aiInput: AnalyzeScamReportsInput = {
-        reportDetails,
-    };
-
-    if (paymentDetails) {
-        aiInput.paymentDetails = paymentDetails;
-    }
-
-    if (evidence) {
-        aiInput.evidenceImage = await toDataURI(evidence);
-    }
     
     try {
+        const evidenceDataUri = await toDataURI(evidence);
+        
+        const reportDetails = `Instagram ID: @${instagramId}\nCategory: ${category}\nDetails: ${scamDetails}`;
+        
+        const aiInput: AnalyzeScamReportsInput = {
+            reportDetails,
+            evidenceImage: evidenceDataUri,
+        };
+
+        if (paymentDetails) {
+            aiInput.paymentDetails = paymentDetails;
+        }
+        
         const aiResult: AnalyzeScamReportsOutput = await analyzeScamReports(aiInput);
+
+        // Store the report after successful analysis
+        addScamReport({
+            instagramId,
+            category,
+            scamDetails,
+            evidenceDataUri: evidenceDataUri
+        });
 
         return {
             message: "Report submitted successfully for analysis.",
@@ -65,9 +74,9 @@ export async function submitScamReport(
         };
 
     } catch (error) {
-        console.error('AI analysis failed:', error);
+        console.error('AI analysis or data storage failed:', error);
         return {
-            message: 'Failed to analyze the report. Please try again later.',
+            message: 'Failed to analyze or store the report. Please try again later.',
             isScam: null,
             reasoning: null,
             success: false,
