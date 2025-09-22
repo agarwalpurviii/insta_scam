@@ -77,6 +77,30 @@
       "description": "Screenshot of a fake crypto investment dashboard showing false earnings.",
       "imageUrl": "https://picsum.photos/seed/ev13/400/200",
       "imageHint": "fake dashboard"
+    },
+    {
+      "id": "ev14",
+      "description": "Screenshot of a fake electronics store's Instagram profile with bot followers.",
+      "imageUrl": "https://picsum.photos/seed/ev14/400/200",
+      "imageHint": "bot followers"
+    },
+    {
+      "id": "ev15",
+      "description": "Screenshot of multiple negative comments on a scammer's post before they are deleted.",
+      "imageUrl": "https://picsum.photos/seed/ev15/400/200",
+      "imageHint": "negative comments"
+    },
+    {
+      "id": "ev16",
+      "description": "Photo of the dangerous, mislabeled 'health' product that was delivered.",
+      "imageUrl": "https://picsum.photos/seed/ev16/400/200",
+      "imageHint": "mislabeled product"
+    },
+    {
+      "id": "ev17",
+      "description": "Photo showing the difference between the advertised furniture and the cheap item that arrived.",
+      "imageUrl": "https://picsum.photos/seed/ev17/400/200",
+      "imageHint": "product difference"
     }
   ]
 }
