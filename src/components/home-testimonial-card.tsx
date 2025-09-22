@@ -29,7 +29,7 @@ export function HomeTestimonialCard({ testimonial }: HomeTestimonialCardProps) {
 
   return (
     <Card className={cn(
-        "bg-card/80 border-2 border-transparent relative overflow-hidden p-6 flex flex-col h-full",
+        "bg-card/80 border-2 border-transparent relative overflow-hidden p-6 flex flex-col h-full transition-all duration-300 hover:scale-105 hover:shadow-lg",
         isLoss && "border-l-primary"
     )}>
       <div className="flex flex-col sm:items-start gap-2 mb-4">

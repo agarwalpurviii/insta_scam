@@ -9,18 +9,18 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 export default function Home() {
   return (
     <div className="flex flex-col items-center bg-background overflow-x-hidden">
-      <section className="w-full py-20 md:py-32 animate-in fade-in-up duration-500">
+      <section className="w-full py-20 md:py-32">
         <div className="container mx-auto text-center px-4">
-          <div className="flex justify-center items-center gap-4 mb-6">
+          <div className="flex justify-center items-center gap-4 mb-6 animate-in fade-in zoom-in-50 duration-500">
             <Shield className="h-12 w-12 text-primary" />
           </div>
-          <h1 className="text-4xl md:text-6xl font-black tracking-tighter mt-4 font-headline uppercase">
+          <h1 className="text-4xl md:text-6xl font-black tracking-tighter mt-4 font-headline uppercase animate-in fade-in slide-in-from-bottom-4 duration-500 delay-100">
             Stop <span className="bg-gradient-to-r from-primary to-destructive bg-clip-text text-transparent">Instagram Scams</span>
           </h1>
-          <p className="max-w-3xl mx-auto mt-4 text-muted-foreground md:text-xl animate-in fade-in-up duration-500 delay-200">
+          <p className="max-w-3xl mx-auto mt-4 text-muted-foreground md:text-xl animate-in fade-in slide-in-from-bottom-4 duration-500 delay-200">
             Community-driven protection against fraudulent Instagram sellers. Search, report, and help others avoid scams.
           </p>
-          <div className="mt-8 max-w-lg mx-auto animate-in fade-in-up duration-500 delay-300">
+          <div className="mt-8 max-w-lg mx-auto animate-in fade-in slide-in-from-bottom-4 duration-500 delay-300">
             <form className="flex gap-2" action="/search">
               <div className="relative flex-grow">
                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
@@ -36,7 +36,7 @@ export default function Home() {
               </Button>
             </form>
           </div>
-           <div className="mt-8 flex justify-center gap-4 animate-in fade-in-up duration-500 delay-400">
+           <div className="mt-8 flex justify-center gap-4 animate-in fade-in slide-in-from-bottom-4 duration-500 delay-400">
             <Button size="lg" asChild>
               <Link href="/report">Report a Scam</Link>
             </Button>
@@ -49,7 +49,7 @@ export default function Home() {
 
       <section className="w-full py-20 md:py-24 bg-card/40">
           <div className="container mx-auto px-4">
-              <div className="text-center mb-12 animate-in fade-in-up duration-500">
+              <div className="text-center mb-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">What Our Community Says</h2>
                 <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
                     Real stories from users who have been protected and empowered by InstaSafe.
@@ -91,16 +91,16 @@ export default function Home() {
       <section className="w-full pb-20 md:pb-24">
         <div className="container mx-auto px-4">
             <div className="border-t border-border/40 pt-12">
-                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center max-w-4xl mx-auto animate-in fade-in-up duration-500">
-                    <div>
+                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center max-w-4xl mx-auto">
+                    <div className="animate-in fade-in slide-in-from-left-8 duration-500">
                         <p className="text-4xl font-bold text-primary">2,347</p>
                         <p className="text-muted-foreground mt-1">Scams Reported</p>
                     </div>
-                     <div>
+                     <div className="animate-in fade-in slide-in-from-bottom-8 duration-500 delay-100">
                         <p className="text-4xl font-bold text-primary">15,892</p>
                         <p className="text-muted-foreground mt-1">Users Protected</p>
                     </div>
-                     <div>
+                     <div className="animate-in fade-in slide-in-from-right-8 duration-500 delay-200">
                         <p className="text-4xl font-bold text-primary">$485K</p>
                         <p className="text-muted-foreground mt-1">Losses Prevented</p>
                     </div>
