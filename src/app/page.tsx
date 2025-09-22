@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Search, Shield, AlertTriangle, FileText, Users } from "lucide-react";
+import { Search, Shield, Users, Star, CheckCircle } from "lucide-react";
 import Link from "next/link";
+import { HomeTestimonialCard } from '@/components/home-testimonial-card';
+import { homeTestimonials } from '@/lib/testimonials';
 
 export default function Home() {
   return (
@@ -10,7 +12,6 @@ export default function Home() {
         <div className="container mx-auto text-center px-4">
           <div className="flex justify-center items-center gap-4 mb-6">
             <Shield className="h-12 w-12 text-primary" />
-            <AlertTriangle className="h-12 w-12 text-primary" />
           </div>
           <h1 className="text-4xl md:text-6xl font-black tracking-tighter mt-4 font-headline uppercase">
             Stop <span className="text-primary">Instagram Scams</span>
@@ -25,7 +26,7 @@ export default function Home() {
                 <Input
                   type="text"
                   placeholder="Search Instagram username or seller ID..."
-                  className="flex-grow pl-10"
+                  className="flex-grow pl-10 !h-12"
                 />
               </div>
               <Button type="submit" size="lg">
@@ -42,6 +43,33 @@ export default function Home() {
             </Button>
           </div>
         </div>
+      </section>
+
+      <section className="w-full py-20 md:py-24 bg-card/40">
+          <div className="container mx-auto px-4">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold font-headline">What Our Community Says</h2>
+                <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
+                    Real stories from users who have been protected and empowered by ScamGuard.
+                </p>
+            </div>
+             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {homeTestimonials.map((testimonial) => (
+                    <HomeTestimonialCard key={testimonial.id} testimonial={testimonial} />
+                ))}
+            </div>
+
+            <div className="mt-20 max-w-3xl mx-auto bg-card rounded-lg p-8 text-center">
+                 <h3 className="text-2xl font-bold font-headline">Share Your Experience</h3>
+                 <p className="mt-2 text-muted-foreground">Help others by sharing your story - whether you were protected or victimized.</p>
+                 <div className="mt-6 flex justify-center gap-4">
+                     <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white">Share Success Story</Button>
+                     <Button size="lg" variant="destructive" asChild>
+                         <Link href="/report">Report Scam Experience</Link>
+                     </Button>
+                 </div>
+            </div>
+          </div>
       </section>
 
       <section className="w-full pb-20 md:pb-24">
