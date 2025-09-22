@@ -11,7 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
 import { Alert, AlertDescription, AlertTitle } from './ui/alert';
-import { ShieldAlert, Loader2, UploadCloud, FileText } from 'lucide-react';
+import { ShieldAlert, Loader2, UploadCloud, FileText, Image, Link as LinkIcon } from 'lucide-react';
 import { DatePicker } from './ui/date-picker';
 
 
@@ -54,6 +54,8 @@ export function ScamReportForm() {
         message: '',
         isScam: null,
         reasoning: null,
+        imageAnalysisSummary: null,
+        imageSources: [],
         success: false,
     };
     const [state, formAction] = useActionState(submitScamReport, initialState);
@@ -180,15 +182,50 @@ export function ScamReportForm() {
                     <SubmitButton />
 
                     {state.success && (
-                        <Alert variant={state.isScam ? "destructive" : "default"} className="w-full">
-                            <ShieldAlert className="h-4 w-4" />
-                            <AlertTitle className="font-headline">
-                                {state.isScam ? "High Probability of Scam Detected" : "Analysis Complete"}
-                            </AlertTitle>
-                            <AlertDescription>
-                                {state.reasoning}
-                            </AlertDescription>
-                        </Alert>
+                        <div className="w-full space-y-4">
+                            <Alert variant={state.isScam ? "destructive" : "default"} className="w-full">
+                                <ShieldAlert className="h-4 w-4" />
+                                <AlertTitle className="font-headline">
+                                    {state.isScam ? "High Probability of Scam Detected" : "Analysis Complete"}
+                                </AlertTitle>
+                                <AlertDescription>
+                                    {state.reasoning}
+                                </AlertDescription>
+                            </Alert>
+
+                            {state.imageAnalysisSummary && (
+                                 <Card className="bg-muted/50">
+                                    <CardHeader>
+                                        <CardTitle className="flex items-center gap-2 text-base font-headline">
+                                            <Image className="h-5 w-5" />
+                                            Evidence Image Analysis
+                                        </CardTitle>
+                                    </CardHeader>
+                                    <CardContent className="space-y-4">
+                                        <p className="text-sm text-muted-foreground">{state.imageAnalysisSummary}</p>
+                                        {state.imageSources.length > 0 && (
+                                            <div>
+                                                <h4 className="font-semibold mb-2">Potential Sources Found:</h4>
+                                                <div className="space-y-2">
+                                                    {state.imageSources.map((source, index) => (
+                                                        <a 
+                                                            key={index}
+                                                            href={source.url} 
+                                                            target="_blank" 
+                                                            rel="noopener noreferrer" 
+                                                            className="flex items-center gap-2 text-sm text-primary hover:underline break-all"
+                                                        >
+                                                            <LinkIcon className="h-4 w-4 flex-shrink-0" />
+                                                            {source.url}
+                                                        </a>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        )}
+                                    </CardContent>
+                                </Card>
+                            )}
+                        </div>
                     )}
                 </CardFooter>
             </form>

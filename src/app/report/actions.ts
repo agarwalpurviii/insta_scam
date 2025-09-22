@@ -4,10 +4,17 @@ import { analyzeScamReports, type AnalyzeScamReportsInput, type AnalyzeScamRepor
 import { addScamReport } from "@/lib/data";
 import { scamReportSchema } from './schema';
 
+export type ImageSource = {
+    url: string;
+    description: string;
+}
+
 export type ScamReportFormState = {
   message: string;
   isScam: boolean | null;
   reasoning: string | null;
+  imageAnalysisSummary: string | null;
+  imageSources: ImageSource[];
   success: boolean;
 }
 
@@ -43,6 +50,8 @@ export async function submitScamReport(
             message: errorMessages || 'Invalid form data. Please check your inputs.',
             isScam: null,
             reasoning: null,
+            imageAnalysisSummary: null,
+            imageSources: [],
             success: false,
         };
     }
@@ -80,6 +89,8 @@ export async function submitScamReport(
             message: "Report submitted successfully for analysis.",
             isScam: aiResult.isPotentialScam,
             reasoning: aiResult.reasoning,
+            imageAnalysisSummary: aiResult.imageAnalysis?.summary ?? null,
+            imageSources: aiResult.imageAnalysis?.potentialSources ?? [],
             success: true,
         };
 
@@ -89,6 +100,8 @@ export async function submitScamReport(
             message: 'Failed to analyze or store the report. Please try again later.',
             isScam: null,
             reasoning: null,
+            imageAnalysisSummary: null,
+            imageSources: [],
             success: false,
         };
     }
