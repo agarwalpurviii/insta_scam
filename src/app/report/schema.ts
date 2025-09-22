@@ -18,7 +18,7 @@ export const scamReportSchema = z.object({
   paymentDetails: z.string().optional(),
   evidence: z
     .any()
-    .refine((file) => !file || file.size === 0 || file instanceof File, "Invalid file format.")
+    .refine((file) => !file || file instanceof File, "Invalid file format.")
     .refine((file) => !file || file.size === 0 || file.size <= MAX_FILE_SIZE, `Max file size is 5MB.`)
     .refine(
       (file) => !file || file.size === 0 || ACCEPTED_IMAGE_TYPES.includes(file.type),
