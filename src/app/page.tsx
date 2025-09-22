@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Search, Shield } from "lucide-react";
+import { Search, Shield, UserCheck, FileWarning, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 import { HomeTestimonialCard } from '@/components/home-testimonial-card';
 import { homeTestimonials } from '@/lib/testimonials';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function Home() {
   return (
@@ -51,6 +52,52 @@ export default function Home() {
             <Button size="lg" variant="secondary" asChild>
               <Link href="/directory">Browse Directory</Link>
             </Button>
+          </div>
+        </div>
+      </section>
+
+      <section className="w-full py-20 md:py-24">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16 animate-in fade-in slide-in-from-bottom-4 duration-500">
+            <h2 className="text-3xl md:text-4xl font-bold font-headline">How It Works</h2>
+            <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
+              A simple, community-powered process to keep you safe.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center max-w-5xl mx-auto">
+            <div className="flex flex-col items-center animate-in fade-in-up duration-500 delay-100">
+              <Card className="p-6 bg-card/50 w-full max-w-xs">
+                <CardContent className="p-0">
+                  <div className="flex justify-center items-center bg-secondary rounded-lg h-24 mb-6">
+                    <UserCheck className="w-12 h-12 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold font-headline mb-2">1. Search</h3>
+                  <p className="text-muted-foreground">Enter the Instagram username to check our database for scam reports and user testimonials.</p>
+                </CardContent>
+              </Card>
+            </div>
+            <div className="flex flex-col items-center animate-in fade-in-up duration-500 delay-200">
+              <Card className="p-6 bg-card/50 w-full max-w-xs">
+                <CardContent className="p-0">
+                   <div className="flex justify-center items-center bg-secondary rounded-lg h-24 mb-6">
+                    <ShieldCheck className="w-12 h-12 text-green-500" />
+                  </div>
+                  <h3 className="text-xl font-bold font-headline mb-2">2. Verify</h3>
+                  <p className="text-muted-foreground">Review detailed reports, evidence, and community feedback to verify a seller's legitimacy.</p>
+                </CardContent>
+              </Card>
+            </div>
+            <div className="flex flex-col items-center animate-in fade-in-up duration-500 delay-300">
+              <Card className="p-6 bg-card/50 w-full max-w-xs">
+                <CardContent className="p-0">
+                   <div className="flex justify-center items-center bg-secondary rounded-lg h-24 mb-6">
+                    <FileWarning className="w-12 h-12 text-destructive" />
+                  </div>
+                  <h3 className="text-xl font-bold font-headline mb-2">3. Report</h3>
+                  <p className="text-muted-foreground">Submit your own experience with evidence to help expand our database and protect others.</p>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
