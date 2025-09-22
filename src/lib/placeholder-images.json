@@ -179,6 +179,12 @@
       "description": "Image of a poorly made armchair from a scammer.",
       "imageUrl": "https://picsum.photos/seed/home1/400/200",
       "imageHint": "broken armchair"
+    },
+    {
+      "id": "damagedsneaker1",
+      "description": "Image of damaged, counterfeit sneakers with peeling soles and bad stitching.",
+      "imageUrl": "https://picsum.photos/seed/damagedsneaker1/400/200",
+      "imageHint": "damaged shoes"
     }
   ]
 }
