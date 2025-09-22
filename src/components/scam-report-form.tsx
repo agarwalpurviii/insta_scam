@@ -2,7 +2,7 @@
 
 import { useFormStatus } from 'react-dom';
 import { submitScamReport, type ScamReportFormState } from '@/app/report/actions';
-import { useActionState, useEffect, useRef, useState } from 'react';
+import { useActionState, useEffect, useRef } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -11,8 +11,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
 import { Alert, AlertDescription, AlertTitle } from './ui/alert';
-import { ShieldAlert, Loader2, UploadCloud, FileText, Image, Link as LinkIcon } from 'lucide-react';
+import { ShieldAlert, Loader2, UploadCloud, FileText, Image, Link as LinkIcon, Users, MessageSquare, Newspaper } from 'lucide-react';
 import { DatePicker } from './ui/date-picker';
+import { Progress } from './ui/progress';
 
 
 function SubmitButton() {
@@ -54,6 +55,9 @@ export function ScamReportForm() {
         message: '',
         isScam: null,
         reasoning: null,
+        riskScore: null,
+        detailedAnalysis: null,
+        recommendation: null,
         imageAnalysisSummary: null,
         imageSources: [],
         success: false,
@@ -76,6 +80,8 @@ export function ScamReportForm() {
             }
         }
     }, [state, toast]);
+
+    const riskColor = state.riskScore && state.riskScore > 75 ? 'text-destructive' : state.riskScore && state.riskScore > 40 ? 'text-yellow-500' : 'text-green-500';
 
     return (
         <Card>
@@ -138,7 +144,7 @@ export function ScamReportForm() {
                                 <Textarea
                                     id="scamDetails"
                                     name="scamDetails"
-                                    placeholder="Describe what happened in detail. Include dates, conversation summaries, etc."
+                                    placeholder="Describe what happened in detail. Include dates, conversation summaries, payment methods used, seller's follower count, post frequency, and the types of comments you saw."
                                     className="min-h-[120px]"
                                     required
                                     minLength={20}
@@ -182,16 +188,66 @@ export function ScamReportForm() {
                     <SubmitButton />
 
                     {state.success && (
-                        <div className="w-full space-y-4">
+                        <div className="w-full space-y-6">
                             <Alert variant={state.isScam ? "destructive" : "default"} className="w-full">
                                 <ShieldAlert className="h-4 w-4" />
-                                <AlertTitle className="font-headline">
-                                    {state.isScam ? "High Probability of Scam Detected" : "Analysis Complete"}
+                                <AlertTitle className="font-headline text-lg">
+                                    {state.recommendation}
                                 </AlertTitle>
                                 <AlertDescription>
                                     {state.reasoning}
                                 </AlertDescription>
                             </Alert>
+                             {state.riskScore !== null && (
+                                <Card>
+                                    <CardHeader>
+                                        <CardTitle className="text-base font-headline">Risk Score</CardTitle>
+                                    </CardHeader>
+                                    <CardContent>
+                                        <div className="flex items-center gap-4">
+                                            <div className={`text-4xl font-bold ${riskColor}`}>{state.riskScore}</div>
+                                            <div className="flex-1">
+                                                <Progress value={state.riskScore} />
+                                                <div className="flex justify-between text-xs text-muted-foreground mt-1">
+                                                    <span>Low Risk</span>
+                                                    <span>High Risk</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </CardContent>
+                                </Card>
+                            )}
+
+                             {state.detailedAnalysis && (
+                                <Card>
+                                    <CardHeader>
+                                        <CardTitle className="text-base font-headline">Detailed Forensic Analysis</CardTitle>
+                                    </CardHeader>
+                                    <CardContent className="space-y-4">
+                                        <div className="flex items-start gap-4">
+                                            <Users className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                                            <div>
+                                                <h4 className="font-semibold">Engagement Analysis</h4>
+                                                <p className="text-sm text-muted-foreground">{state.detailedAnalysis.engagementAnalysis}</p>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-start gap-4">
+                                            <Newspaper className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                                            <div>
+                                                <h4 className="font-semibold">Post Quality Analysis</h4>
+                                                <p className="text-sm text-muted-foreground">{state.detailedAnalysis.postQualityAnalysis}</p>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-start gap-4">
+                                            <MessageSquare className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                                            <div>
+                                                <h4 className="font-semibold">Interaction Authenticity</h4>
+                                                <p className="text-sm text-muted-foreground">{state.detailedAnalysis.interactionAuthenticityAnalysis}</p>
+                                            </div>
+                                        </div>
+                                    </CardContent>
+                                </Card>
+                             )}
 
                             {state.imageAnalysisSummary && (
                                  <Card className="bg-muted/50">

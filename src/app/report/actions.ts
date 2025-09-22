@@ -13,6 +13,13 @@ export type ScamReportFormState = {
   message: string;
   isScam: boolean | null;
   reasoning: string | null;
+  riskScore: number | null;
+  detailedAnalysis: {
+      engagementAnalysis: string;
+      postQualityAnalysis: string;
+      interactionAuthenticityAnalysis: string;
+  } | null,
+  recommendation: string | null;
   imageAnalysisSummary: string | null;
   imageSources: ImageSource[];
   success: boolean;
@@ -50,6 +57,9 @@ export async function submitScamReport(
             message: errorMessages || 'Invalid form data. Please check your inputs.',
             isScam: null,
             reasoning: null,
+            riskScore: null,
+            detailedAnalysis: null,
+            recommendation: null,
             imageAnalysisSummary: null,
             imageSources: [],
             success: false,
@@ -88,7 +98,10 @@ export async function submitScamReport(
         return {
             message: "Report submitted successfully for analysis.",
             isScam: aiResult.isPotentialScam,
-            reasoning: aiResult.reasoning,
+            reasoning: aiResult.overallReasoning,
+            riskScore: aiResult.riskScore,
+            detailedAnalysis: aiResult.detailedAnalysis,
+            recommendation: aiResult.recommendation,
             imageAnalysisSummary: aiResult.imageAnalysis?.summary ?? null,
             imageSources: aiResult.imageAnalysis?.potentialSources ?? [],
             success: true,
@@ -100,6 +113,9 @@ export async function submitScamReport(
             message: 'Failed to analyze or store the report. Please try again later.',
             isScam: null,
             reasoning: null,
+            riskScore: null,
+            detailedAnalysis: null,
+            recommendation: null,
             imageAnalysisSummary: null,
             imageSources: [],
             success: false,
