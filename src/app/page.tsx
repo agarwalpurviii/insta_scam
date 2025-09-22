@@ -24,7 +24,7 @@ export default function Home() {
             <Shield className="h-12 w-12 text-primary" />
           </div>
           <h1 className="text-4xl md:text-6xl font-black tracking-tighter mt-4 font-headline uppercase animate-in fade-in slide-in-from-bottom-4 duration-500 delay-100">
-            Stop <span className="bg-gradient-to-r from-primary to-destructive bg-clip-text text-transparent">Instagram Scams</span>
+            Stop <span className="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 bg-clip-text text-transparent">Instagram Scams</span>
           </h1>
           <p className="max-w-3xl mx-auto mt-4 text-muted-foreground md:text-xl animate-in fade-in slide-in-from-bottom-4 duration-500 delay-200">
             Community-driven protection against fraudulent Instagram sellers. Search, report, and help others avoid scams.
