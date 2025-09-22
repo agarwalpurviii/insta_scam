@@ -14,6 +14,8 @@ export default function Home() {
             <div className="absolute bg-primary rounded-full w-64 h-64 -top-16 -left-16 animate-float"></div>
             <div className="absolute bg-destructive rounded-full w-48 h-48 -bottom-24 right-8 animate-float animation-delay-3000"></div>
             <div className="absolute bg-secondary rounded-full w-32 h-32 top-1/2 left-1/3 animate-float animation-delay-6000"></div>
+            <div className="absolute bg-accent/50 rounded-lg w-40 h-40 -bottom-16 left-24 animate-float animation-delay-[4s] rotate-45"></div>
+            <div className="absolute bg-primary/30 rounded-full w-24 h-24 top-24 right-1/4 animate-float animation-delay-[8s]"></div>
         </div>
 
         <div className="container mx-auto text-center px-4 relative z-10">
