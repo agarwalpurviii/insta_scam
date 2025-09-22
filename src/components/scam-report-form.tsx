@@ -94,7 +94,7 @@ export function ScamReportForm() {
     }, [state, toast]);
 
     return (
-        <Card>
+        <Card className="bg-card/50">
             <form
                 ref={formRef}
                 action={formAction}
