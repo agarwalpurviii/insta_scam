@@ -1,69 +1,35 @@
+import { ScammerProfileCard } from '@/components/scammer-profile-card';
 import { scamAccounts } from '@/lib/data';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Search } from 'lucide-react';
-import { ScamAccountCard } from '@/components/scam-account-card';
-import type { ScamAccount } from '@/lib/types';
-import { Separator } from '@/components/ui/separator';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Users, ShieldCheck, Hourglass, DollarSign } from 'lucide-react';
+
+const stats = [
+  { title: 'Total Scammers', value: '2,347', color: 'text-destructive' },
+  { title: 'Verified Scams', value: '1,923', color: 'text-destructive' },
+  { title: 'Under Review', value: '424', color: 'text-yellow-500' },
+  { title: 'Total Losses', value: '$1.2M', color: 'text-green-500' },
+];
 
 export default function DirectoryPage() {
-  const categories = [
-    'Fashion & Apparel',
-    'Electronics',
-    'Jewelry & Accessories',
-    'Pets',
-    'Financial Scams',
-    'Home Goods',
-    'Health & Beauty',
-    'Other',
-  ];
-
-  const groupedAccounts = categories.reduce((acc, category) => {
-    const accountsInCategory = scamAccounts.filter(
-      (account) => account.category === category
-    );
-    if (accountsInCategory.length > 0) {
-      acc[category] = accountsInCategory;
-    }
-    return acc;
-  }, {} as Record<string, ScamAccount[]>);
-
   return (
-    <div className="container mx-auto py-12 px-4">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold tracking-tight font-headline">Directory of Scam Accounts</h1>
-        <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-          Browse our list of community-reported fraudulent Instagram accounts.
-        </p>
-      </div>
-      <div className="mb-12 max-w-lg mx-auto">
-        <form className="flex gap-2">
-          <Input
-            type="text"
-            placeholder="Search by Instagram ID..."
-            className="flex-grow"
-          />
-          <Button type="submit">
-            <Search className="mr-2 h-5 w-5" />
-            Search
-          </Button>
-        </form>
-      </div>
-      
-      <div className="space-y-12">
-        {Object.entries(groupedAccounts).map(([category, accounts]) => {
-            return (
-              <section key={category}>
-                <h2 className="text-2xl font-bold font-headline mb-4">{category}</h2>
-                <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {accounts.map((account) => (
-                    <ScamAccountCard key={account.id} account={account} />
-                  ))}
-                </div>
-                <Separator className="mt-12" />
-              </section>
-            );
-        })}
+    <div className="min-h-screen bg-background text-foreground p-4 sm:p-6 md:p-8">
+      <div className="container mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+          {stats.map((stat) => (
+            <Card key={stat.title} className="bg-transparent border-border/50 text-center">
+              <CardHeader className="flex flex-col items-center justify-center space-y-2 pb-2">
+                <div className={`text-3xl font-bold ${stat.color}`}>{stat.value}</div>
+                <CardTitle className="text-sm font-medium text-muted-foreground">{stat.title}</CardTitle>
+              </CardHeader>
+            </Card>
+          ))}
+        </div>
+
+        <div className="space-y-4">
+            {scamAccounts.map((account) => (
+                <ScammerProfileCard key={account.id} account={account} />
+            ))}
+        </div>
       </div>
     </div>
   );

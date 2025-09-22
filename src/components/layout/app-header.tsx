@@ -27,7 +27,7 @@ export function AppHeader() {
             </Link>
           </Button>
         </nav>
-        <Button asChild>
+        <Button asChild variant="destructive">
             <Link href="/report">Report Scam</Link>
         </Button>
       </div>
