@@ -2,31 +2,31 @@
   "placeholderImages": [
     {
       "id": "ev1",
-      "description": "Evidence screenshot of a payment receipt.",
+      "description": "Evidence screenshot of a payment receipt to a scammer.",
       "imageUrl": "https://picsum.photos/seed/ev1/400/200",
-      "imageHint": "receipt screenshot"
+      "imageHint": "payment receipt"
     },
     {
       "id": "ev2",
-      "description": "Evidence screenshot of a counterfeit product.",
+      "description": "Evidence photo comparing an authentic product to a counterfeit one.",
       "imageUrl": "https://picsum.photos/seed/ev2/400/200",
       "imageHint": "counterfeit product"
     },
     {
       "id": "ev3",
-      "description": "Evidence screenshot of a conversation with the seller.",
+      "description": "Evidence screenshot of a conversation where the seller becomes hostile.",
       "imageUrl": "https://picsum.photos/seed/ev3/400/200",
       "imageHint": "seller conversation"
     },
     {
       "id": "ev4",
-      "description": "Evidence photo of a low-quality plastic ring.",
+      "description": "Evidence photo of a low-quality plastic ring that was advertised as silver.",
       "imageUrl": "https://picsum.photos/seed/ev4/400/200",
       "imageHint": "plastic ring"
     },
     {
       "id": "ev5",
-      "description": "Evidence screenshot showing a stolen product photo.",
+      "description": "Evidence screenshot showing a scammer using a stolen product photo from a legitimate website.",
       "imageUrl": "https://picsum.photos/seed/ev5/400/200",
       "imageHint": "stolen photo"
     },
@@ -47,6 +47,36 @@
       "description": "Screenshot of a luxury decor scammer's Instagram page.",
       "imageUrl": "https://picsum.photos/seed/ev8/400/200",
       "imageHint": "instagram page"
+    },
+    {
+      "id": "ev9",
+      "description": "Screenshot of a fake shipping confirmation or tracking number.",
+      "imageUrl": "https://picsum.photos/seed/ev9/400/200",
+      "imageHint": "shipping confirmation"
+    },
+    {
+      "id": "ev10",
+      "description": "Photo showing the poor quality and bad stitching on a counterfeit item.",
+      "imageUrl": "https://picsum.photos/seed/ev10/400/200",
+      "imageHint": "bad stitching"
+    },
+    {
+      "id": "ev11",
+      "description": "Screenshot of a now-deleted Instagram profile after a scam.",
+      "imageUrl": "https://picsum.photos/seed/ev11/400/200",
+      "imageHint": "deleted account"
+    },
+    {
+      "id": "ev12",
+      "description": "A photo of a user's finger turned green from a fake silver ring.",
+      "imageUrl": "https://picsum.photos/seed/ev12/400/200",
+      "imageHint": "green finger"
+    },
+    {
+      "id": "ev13",
+      "description": "Screenshot of a fake crypto investment dashboard showing false earnings.",
+      "imageUrl": "https://picsum.photos/seed/ev13/400/200",
+      "imageHint": "fake dashboard"
     }
   ]
 }
