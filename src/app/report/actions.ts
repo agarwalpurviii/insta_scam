@@ -1,6 +1,6 @@
 'use server';
 
-import { analyzeScamReports, type AnalyzeScamReportsOutput } from "@/ai/flows/analyze-scam-reports-for-patterns";
+import { analyzeScamReports, type AnalyzeScamReportsInput, type AnalyzeScamReportsOutput } from "@/ai/flows/analyze-scam-reports-for-patterns";
 import { scamReportSchema } from './schema';
 
 export type ScamReportFormState = {
@@ -42,14 +42,20 @@ export async function submitScamReport(
     const { instagramId, category, scamDetails, paymentDetails, evidence } = validatedFields.data;
     const reportDetails = `Instagram ID: @${instagramId}\nCategory: ${category}\nDetails: ${scamDetails}`;
     
-    const evidenceImage = evidence ? await toDataURI(evidence) : undefined;
+    const aiInput: AnalyzeScamReportsInput = {
+        reportDetails,
+    };
 
+    if (paymentDetails) {
+        aiInput.paymentDetails = paymentDetails;
+    }
+
+    if (evidence) {
+        aiInput.evidenceImage = await toDataURI(evidence);
+    }
+    
     try {
-        const aiResult: AnalyzeScamReportsOutput = await analyzeScamReports({ 
-            reportDetails,
-            paymentDetails,
-            evidenceImage,
-        });
+        const aiResult: AnalyzeScamReportsOutput = await analyzeScamReports(aiInput);
 
         return {
             message: "Report submitted successfully for analysis.",
