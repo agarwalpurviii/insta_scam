@@ -40,3 +40,29 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .animation-delay-3000 {
+    animation-delay: 3s;
+  }
+  .animation-delay-6000 {
+    animation-delay: 6s;
+  }
+}
+
+
+@keyframes float {
+  0% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) translateX(20px) rotate(180deg);
+  }
+  100% {
+    transform: translateY(0px) translateX(0px) rotate(360deg);
+  }
+}
+
+.animate-float {
+  animation: float 15s ease-in-out infinite;
+}

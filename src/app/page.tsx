@@ -9,8 +9,14 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 export default function Home() {
   return (
     <div className="flex flex-col items-center bg-background overflow-x-hidden">
-      <section className="w-full py-20 md:py-32">
-        <div className="container mx-auto text-center px-4">
+      <section className="relative w-full py-20 md:py-32 overflow-hidden">
+        <div className="absolute inset-0 z-0 opacity-10">
+            <div className="absolute bg-primary rounded-full w-64 h-64 -top-16 -left-16 animate-float"></div>
+            <div className="absolute bg-destructive rounded-full w-48 h-48 -bottom-24 right-8 animate-float animation-delay-3000"></div>
+            <div className="absolute bg-secondary rounded-full w-32 h-32 top-1/2 left-1/3 animate-float animation-delay-6000"></div>
+        </div>
+
+        <div className="container mx-auto text-center px-4 relative z-10">
           <div className="flex justify-center items-center gap-4 mb-6 animate-in fade-in zoom-in-50 duration-500">
             <Shield className="h-12 w-12 text-primary" />
           </div>
