@@ -12,7 +12,7 @@ export function AppHeader() {
         </Link>
         <nav className="hidden md:flex items-center gap-6">
           <Button variant="ghost" asChild>
-            <Link href="/" className="flex items-center gap-2">
+            <Link href="/search" className="flex items-center gap-2">
                 <Search className="h-4 w-4" /> Search
             </Link>
           </Button>

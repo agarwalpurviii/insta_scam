@@ -20,11 +20,12 @@ export default function Home() {
             Community-driven protection against fraudulent Instagram sellers. Search, report, and help others avoid scams.
           </p>
           <div className="mt-8 max-w-lg mx-auto">
-            <form className="flex gap-2">
+            <form className="flex gap-2" action="/search">
               <div className="relative flex-grow">
                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                 <Input
                   type="text"
+                  name="q"
                   placeholder="Search Instagram username or seller ID..."
                   className="flex-grow pl-10 !h-12"
                 />
