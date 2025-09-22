@@ -5,6 +5,8 @@ import { Search } from 'lucide-react';
 import { ScamAccountCard } from '@/components/scam-account-card';
 import type { ScamAccount } from '@/lib/types';
 import { Separator } from '@/components/ui/separator';
+import Image from 'next/image';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export default function DirectoryPage() {
   const categories = [
@@ -18,6 +20,17 @@ export default function DirectoryPage() {
     'Other',
   ];
 
+  const categoryImageMap: Record<string, string> = {
+    'Fashion & Apparel': 'sneaker2',
+    'Electronics': 'iphone1',
+    'Jewelry & Accessories': 'jewelry1',
+    'Pets': 'pet1',
+    'Financial Scams': 'finance1',
+    'Home Goods': 'home1',
+    'Health & Beauty': 'health1',
+    'Other': 'ev9', // Using a generic evidence image for 'Other'
+  };
+
   const groupedAccounts = categories.reduce((acc, category) => {
     const accountsInCategory = scamAccounts.filter(
       (account) => account.category === category
@@ -27,6 +40,11 @@ export default function DirectoryPage() {
     }
     return acc;
   }, {} as Record<string, ScamAccount[]>);
+
+  const getImageForCategory = (category: string) => {
+    const imageId = categoryImageMap[category];
+    return PlaceHolderImages.find(img => img.id === imageId);
+  };
 
   return (
     <div className="container mx-auto py-12 px-4">
@@ -51,17 +69,31 @@ export default function DirectoryPage() {
       </div>
       
       <div className="space-y-12">
-        {Object.entries(groupedAccounts).map(([category, accounts]) => (
-          <section key={category}>
-            <h2 className="text-2xl font-bold font-headline mb-6">{category}</h2>
-            <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {accounts.map((account) => (
-                <ScamAccountCard key={account.id} account={account} />
-              ))}
-            </div>
-            <Separator className="mt-12" />
-          </section>
-        ))}
+        {Object.entries(groupedAccounts).map(([category, accounts]) => {
+            const image = getImageForCategory(category);
+            return (
+              <section key={category}>
+                <h2 className="text-2xl font-bold font-headline mb-4">{category}</h2>
+                {image && (
+                  <div className="mb-6 rounded-lg overflow-hidden relative aspect-video max-h-[250px] w-full">
+                    <Image
+                      src={image.imageUrl}
+                      alt={`Reference image for ${category} scams`}
+                      fill
+                      className="object-cover"
+                      data-ai-hint={image.imageHint}
+                    />
+                  </div>
+                )}
+                <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {accounts.map((account) => (
+                    <ScamAccountCard key={account.id} account={account} />
+                  ))}
+                </div>
+                <Separator className="mt-12" />
+              </section>
+            );
+        })}
       </div>
     </div>
   );
