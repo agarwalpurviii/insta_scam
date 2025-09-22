@@ -1,8 +1,8 @@
 'use client';
 
-import { useFormState, useFormStatus } from 'react-dom';
+import { useFormStatus } from 'react-dom';
 import { submitScamReport, type ScamReportFormState } from '@/app/report/actions';
-import { useEffect, useRef, useState } from 'react';
+import { useActionState, useEffect, useRef, useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -51,7 +51,7 @@ export function ScamReportForm() {
         reasoning: null,
         success: false,
     };
-    const [state, formAction] = useFormState(submitScamReport, initialState);
+    const [state, formAction] = useActionState(submitScamReport, initialState);
 
     useEffect(() => {
         if (state.message && !state.success) {
