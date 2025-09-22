@@ -80,7 +80,7 @@ export function ImageSearchForm() {
                                 <div className="flex flex-col items-center justify-center pt-5 pb-6 text-center">
                                     <UploadCloud className="w-8 h-8 mb-4 text-muted-foreground" />
                                     <p className="mb-2 text-sm text-muted-foreground">Click to upload a product image</p>
-                                    <Button type="button" size="sm" variant="secondary" className="pointer-events-none mt-2">Choose File</Button>
+                                    <div className="mt-2 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium h-9 px-3 bg-secondary text-secondary-foreground">Choose File</div>
                                     <p className="text-xs text-muted-foreground mt-4">Max 5MB. JPG, PNG, WEBP supported.</p>
                                 </div>
                             )}
