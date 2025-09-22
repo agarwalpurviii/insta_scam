@@ -5,6 +5,10 @@ import { Button } from '@/components/ui/button';
 import { AlertTriangle, DollarSign, Clock, Instagram, Users } from 'lucide-react';
 import Link from 'next/link';
 
+type ScamAccountProps = {
+  account: ScamAccount;
+};
+
 export function ScammerProfileCard({ account }: ScamAccountProps) {
   const isVerified = account.status === 'verified_scam';
 
@@ -56,7 +60,12 @@ export function ScammerProfileCard({ account }: ScamAccountProps) {
                 </Link>
             </Button>
             <Button variant="ghost" size="sm" asChild>
-                <Link href="#" className="text-muted-foreground justify-center">
+                <Link 
+                    href={`https://www.instagram.com/${account.instagramId.substring(1)}`} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground justify-center"
+                >
                     <Instagram className="h-4 w-4 mr-2" />
                     Instagram
                 </Link>
