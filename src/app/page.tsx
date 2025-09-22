@@ -31,8 +31,12 @@ export default function Home() {
             Community-driven protection against fraudulent Instagram sellers. Search, report, and help others avoid scams.
           </p>
           <div className="mt-6 space-y-2 text-sm text-muted-foreground animate-in fade-in slide-in-from-bottom-4 duration-500 delay-300">
-            <p className="italic">"Scammers copy, sellers create. Spot the difference."</p>
-            <p className="italic font-semibold text-primary/90">"Be InstaSmart. Report scams. Stay safe."</p>
+            <p className="italic animate-shimmer bg-gradient-to-r from-muted-foreground via-foreground to-muted-foreground bg-[length:200%_100%] bg-clip-text text-transparent">
+              "Scammers copy, sellers create. Spot the difference."
+            </p>
+            <p className="italic font-semibold animate-shimmer bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-[length:200%_100%] bg-clip-text text-transparent">
+              "Be InstaSmart. Report scams. Stay safe."
+            </p>
           </div>
           <div className="mt-8 max-w-lg mx-auto animate-in fade-in slide-in-from-bottom-4 duration-500 delay-300">
             <form className="flex gap-2" action="/search">

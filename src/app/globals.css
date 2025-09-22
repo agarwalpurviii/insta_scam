@@ -78,3 +78,12 @@
 .animate-float {
   animation: float 20s ease-in-out infinite;
 }
+
+@keyframes shimmer {
+  0%, 100% {
+    background-position: -100% 0;
+  }
+  50% {
+    background-position: 100% 0;
+  }
+}
