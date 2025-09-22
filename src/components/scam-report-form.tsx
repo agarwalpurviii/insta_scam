@@ -11,8 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
 import { Alert, AlertDescription, AlertTitle } from './ui/alert';
-import { ShieldAlert, Loader2, UploadCloud, X, FileText } from 'lucide-react';
-import Image from 'next/image';
+import { ShieldAlert, Loader2, UploadCloud, FileText } from 'lucide-react';
 import { DatePicker } from './ui/date-picker';
 
 
@@ -50,7 +49,6 @@ export function ScamReportForm() {
     const { toast } = useToast();
     const formRef = useRef<HTMLFormElement>(null);
     const fileInputRef = useRef<HTMLInputElement>(null);
-    const [imagePreview, setImagePreview] = useState<string | null>(null);
     
     const initialState: ScamReportFormState = {
         message: '',
@@ -59,26 +57,6 @@ export function ScamReportForm() {
         success: false,
     };
     const [state, formAction] = useActionState(submitScamReport, initialState);
-
-    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const file = event.target.files?.[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setImagePreview(reader.result as string);
-            };
-            reader.readAsDataURL(file);
-        } else {
-            setImagePreview(null);
-        }
-    };
-
-    const handleRemoveImage = () => {
-        setImagePreview(null);
-        if (fileInputRef.current) {
-            fileInputRef.current.value = '';
-        }
-    };
 
 
     useEffect(() => {
@@ -91,7 +69,9 @@ export function ScamReportForm() {
         }
         if (state.success) {
             formRef.current?.reset();
-            setImagePreview(null);
+            if (fileInputRef.current) {
+                fileInputRef.current.value = '';
+            }
         }
     }, [state, toast]);
 
@@ -162,28 +142,36 @@ export function ScamReportForm() {
                                     minLength={20}
                                 />
                             </div>
-                            <div className="space-y-2 md:col-span-2">
-                                <Label htmlFor="evidence">Evidence</Label>
-                                <div className="relative flex items-center justify-center w-full">
-                                {!imagePreview ? (
-                                        <label htmlFor="evidence-file" className="flex flex-col items-center justify-center w-full h-48 border-2 border-dashed rounded-lg cursor-pointer bg-card hover:bg-muted">
-                                            <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                                                <UploadCloud className="w-8 h-8 mb-4 text-muted-foreground" />
-                                                <p className="mb-2 text-sm text-muted-foreground"><span className="font-semibold">Click to upload</span> or drag and drop</p>
-                                                <p className="text-xs text-muted-foreground">PNG, JPG, or WEBP (MAX. 5MB)</p>
-                                            </div>
-                                            <Input id="evidence-file" ref={fileInputRef} name="evidence" type="file" className="hidden" onChange={handleFileChange} accept="image/png, image/jpeg, image/webp" />
-                                        </label>
-                                    ) : (
-                                        <div className="relative w-full h-48 rounded-lg overflow-hidden border">
-                                            <Image src={imagePreview} alt="Evidence preview" layout="fill" objectFit="contain" />
-                                            <Button type="button" variant="destructive" size="icon" className="absolute top-2 right-2 h-7 w-7" onClick={handleRemoveImage}>
-                                                <X className="h-4 w-4" />
-                                                <span className="sr-only">Remove image</span>
-                                            </Button>
-                                        </div>
-                                    )}
+                        </div>
+                    </div>
+
+                    {/* Evidence Section */}
+                    <div className="space-y-4">
+                        <h3 className="text-lg font-semibold font-headline">Evidence (Optional but Recommended)</h3>
+                         <div className="relative flex items-center justify-center w-full">
+                            <label htmlFor="evidence-file" className="flex flex-col items-center justify-center w-full h-48 border-2 border-dashed rounded-lg cursor-pointer bg-card hover:bg-muted">
+                                <div className="flex flex-col items-center justify-center pt-5 pb-6 text-center">
+                                    <UploadCloud className="w-8 h-8 mb-4 text-muted-foreground" />
+                                    <p className="mb-2 text-sm text-muted-foreground">Upload screenshots, chat logs, payment receipts, or other evidence</p>
+                                    <Button type="button" size="sm" variant="secondary" className="pointer-events-none mt-2">Choose Files</Button>
+                                    <p className="text-xs text-muted-foreground mt-4">Max 1 file, 5MB. JPG, PNG supported.</p>
                                 </div>
+                                <Input id="evidence-file" ref={fileInputRef} name="evidence" type="file" className="hidden" accept="image/png, image/jpeg, image/webp" />
+                            </label>
+                        </div>
+                    </div>
+
+                    {/* Contact Information Section */}
+                    <div className="space-y-4">
+                        <h3 className="text-lg font-semibold font-headline">Your Contact Information</h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="space-y-2">
+                                <Label htmlFor="reporterName">Your Name (Optional)</Label>
+                                <Input id="reporterName" name="reporterName" placeholder="Anonymous" />
+                            </div>
+                            <div className="space-y-2">
+                                <Label htmlFor="reporterEmail">Your Email (Optional)</Label>
+                                <Input id="reporterEmail" name="reporterEmail" type="email" placeholder="For follow-up questions" />
                             </div>
                         </div>
                     </div>

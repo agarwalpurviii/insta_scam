@@ -34,4 +34,7 @@ export const scamReportSchema = z.object({
     )
     .transform(file => (file && file.size > 0) ? file : undefined)
     .optional(),
+
+  reporterName: z.string().optional(),
+  reporterEmail: z.string().email({ message: "Please enter a valid email address." }).optional().or(z.literal('')),
 });

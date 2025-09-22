@@ -33,6 +33,8 @@ export async function submitScamReport(
         incidentDate: formData.get('incidentDate'),
         scamDetails: formData.get('scamDetails'),
         evidence: formData.get('evidence'),
+        reporterName: formData.get('reporterName'),
+        reporterEmail: formData.get('reporterEmail'),
     });
 
     if (!validatedFields.success) {
