@@ -9,10 +9,10 @@ export const scamReportSchema = z.object({
   scamDetails: z.string().min(50, { message: 'Please provide at least 50 characters of detail.' }),
   evidence: z
     .instanceof(File)
-    .optional()
-    .refine((file) => !file || file.size <= MAX_FILE_SIZE, `Max file size is 5MB.`)
+    .refine((file) => file?.size > 0, "Evidence image is required.")
+    .refine((file) => file.size <= MAX_FILE_SIZE, `Max file size is 5MB.`)
     .refine(
-      (file) => !file || ACCEPTED_IMAGE_TYPES.includes(file.type),
+      (file) => ACCEPTED_IMAGE_TYPES.includes(file.type),
       ".jpg, .jpeg, .png and .webp files are accepted."
     ),
 });

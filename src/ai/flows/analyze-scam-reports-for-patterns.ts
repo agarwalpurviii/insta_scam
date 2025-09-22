@@ -17,9 +17,8 @@ const AnalyzeScamReportsInputSchema = z.object({
     .describe('Detailed report of scam activity including user testimonials, scam details, and evidence.'),
   evidenceImage: z
     .string()
-    .optional()
     .describe(
-      "An optional image of evidence, as a data URI that must include a MIME type and use Base64 encoding. Expected format: 'data:<mimetype>;base64,<encoded_data>'."
+      "An image of evidence, as a data URI that must include a MIME type and use Base64 encoding. Expected format: 'data:<mimetype>;base64,<encoded_data>'."
     ),
 });
 export type AnalyzeScamReportsInput = z.infer<typeof AnalyzeScamReportsInputSchema>;
@@ -43,14 +42,12 @@ const prompt = ai.definePrompt({
   input: {schema: AnalyzeScamReportsInputSchema},
   output: {schema: AnalyzeScamReportsOutputSchema},
   prompt: `You are an AI assistant specializing in identifying scam patterns from user-submitted reports.
-  Analyze the provided report details and any attached image evidence to determine if there are patterns indicative of scam operations.
+  Analyze the provided report details and the attached image evidence to determine if there are patterns indicative of scam operations.
   Return whether it is a potential scam and provide your reasoning.
 
   Report Details: {{{reportDetails}}}
-  {{#if evidenceImage}}
   Evidence Image:
   {{media url=evidenceImage}}
-  {{/if}}
   `,
 });
 

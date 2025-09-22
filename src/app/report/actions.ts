@@ -2,7 +2,6 @@
 
 import { analyzeScamReports, type AnalyzeScamReportsOutput } from "@/ai/flows/analyze-scam-reports-for-patterns";
 import { scamReportSchema } from './schema';
-import { z } from "zod";
 
 export type ScamReportFormState = {
   message: string;
@@ -41,10 +40,7 @@ export async function submitScamReport(
     const { instagramId, category, scamDetails, evidence } = validatedFields.data;
     const reportDetails = `Instagram ID: ${instagramId}\nCategory: ${category}\nDetails: ${scamDetails}`;
     
-    let evidenceImage: string | undefined;
-    if (evidence && evidence.size > 0) {
-        evidenceImage = await toDataURI(evidence);
-    }
+    const evidenceImage = await toDataURI(evidence);
 
     try {
         const aiResult: AnalyzeScamReportsOutput = await analyzeScamReports({ 
