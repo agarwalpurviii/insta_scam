@@ -10,40 +10,40 @@ import { MiniProfileCard } from "@/components/mini-profile-card";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center bg-transparent overflow-x-hidden">
-      <section className="relative w-full py-20 md:py-32 overflow-hidden">
-        <div className="absolute inset-0 z-0 opacity-10">
-            <Heart className="absolute text-red-500/80 w-32 h-32 -top-16 -left-16 animate-float" />
-            <MessageCircle className="absolute text-sky-400/80 w-24 h-24 -bottom-24 right-8 animate-float animation-delay-3000" />
-            <Camera className="absolute text-purple-500/80 w-20 h-20 top-1/2 left-1/3 animate-float animation-delay-6000" />
-            <UserPlus className="absolute text-green-500/80 w-28 h-28 -bottom-16 left-24 animate-float animation-delay-[4s]" />
-            <AtSign className="absolute text-yellow-500/80 w-24 h-24 top-24 right-1/4 animate-float animation-delay-[8s]" />
-            <Shield className="absolute text-primary/80 w-40 h-40 bottom-1/2 right-1/4 animate-float animation-delay-[10s]" />
+    <div className="relative flex flex-col items-center bg-transparent overflow-x-hidden">
+      <div className="absolute inset-0 z-0 opacity-10 overflow-hidden">
+          <Heart className="absolute text-red-500/80 w-32 h-32 -top-16 -left-16 animate-float" />
+          <MessageCircle className="absolute text-sky-400/80 w-24 h-24 bottom-1/4 right-8 animate-float animation-delay-3000" />
+          <Camera className="absolute text-purple-500/80 w-20 h-20 top-1/2 left-1/3 animate-float animation-delay-6000" />
+          <UserPlus className="absolute text-green-500/80 w-28 h-28 bottom-1/4 left-24 animate-float animation-delay-[4s]" />
+          <AtSign className="absolute text-yellow-500/80 w-24 h-24 top-1/4 right-1/4 animate-float animation-delay-[8s]" />
+          <Shield className="absolute text-primary/80 w-40 h-40 bottom-1/2 right-1/4 animate-float animation-delay-[10s]" />
 
-            {/* Animated Mini Profile Cards */}
+          {/* Animated Mini Profile Cards */}
+          <MiniProfileCard 
+            className="absolute top-1/4 left-1/4 animate-float animation-delay-[2s] opacity-80"
+            username="@fake_designer_deals"
+            followers="102k"
+            following="3"
+            isScam={true}
+          />
             <MiniProfileCard 
-              className="absolute top-1/4 left-1/4 animate-float animation-delay-[2s] opacity-80"
-              username="@fake_designer_deals"
-              followers="102k"
-              following="3"
-              isScam={true}
-            />
-             <MiniProfileCard 
-              className="absolute bottom-1/4 right-1/4 animate-float animation-delay-[7s] opacity-80"
-              username="@crypto_guru_scam"
-              followers="215k"
-              following="1"
-              isScam={true}
-            />
-             <MiniProfileCard 
-              className="absolute top-1/2 right-10 animate-float animation-delay-[5s] opacity-80"
-              username="@rare_sneaker_plug"
-              followers="88k"
-              following="12"
-              isScam={true}
-            />
-        </div>
+            className="absolute bottom-1/4 right-1/4 animate-float animation-delay-[7s] opacity-80"
+            username="@crypto_guru_scam"
+            followers="215k"
+            following="1"
+            isScam={true}
+          />
+            <MiniProfileCard 
+            className="absolute top-1/2 right-10 animate-float animation-delay-[5s] opacity-80"
+            username="@rare_sneaker_plug"
+            followers="88k"
+            following="12"
+            isScam={true}
+          />
+      </div>
 
+      <section className="relative w-full py-20 md:py-32">
         <div className="container mx-auto text-center px-4 relative z-10">
           <div className="flex justify-center items-center gap-4 mb-6 animate-in fade-in zoom-in-50 duration-500">
             <Shield className="h-12 w-12 text-primary" />
@@ -89,7 +89,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="w-full py-20 md:py-24">
+      <section className="w-full py-20 md:py-24 relative z-10">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 animate-in fade-in slide-in-from-bottom-4 duration-500">
             <h2 className="text-3xl md:text-4xl font-bold font-headline">How It Works</h2>
@@ -135,7 +135,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="w-full py-20 md:py-24 bg-card/40">
+      <section className="w-full py-20 md:py-24 bg-card/40 relative z-10">
           <div className="container mx-auto px-4">
               <div className="text-center mb-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
                 <h2 className="text-3xl md:text-4xl font-bold font-headline">What Our Community Says</h2>
@@ -176,7 +176,7 @@ export default function Home() {
           </div>
       </section>
 
-      <section className="w-full pb-20 md:pb-24">
+      <section className="w-full pb-20 md:pb-24 relative z-10">
         <div className="container mx-auto px-4">
             <div className="border-t border-border/40 pt-12">
                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center max-w-4xl mx-auto">
