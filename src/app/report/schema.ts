@@ -4,18 +4,26 @@ const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
 
 export const scamReportSchema = z.object({
-  instagramId: z
+  instagramUsername: z
     .string()
-    .min(1, { message: 'Instagram ID is required.' })
+    .min(1, { message: 'Instagram Username is required.' })
     .refine((value) => !value.startsWith('@'), {
       message: 'Please enter the Instagram ID without the "@" symbol.',
     })
     .refine((value) => !/\s/.test(value), {
       message: 'Instagram ID cannot contain spaces.',
     }),
-  category: z.string().min(1, { message: 'Please select a category.' }),
+  displayName: z.string().optional(),
+  phone: z.string().optional(),
+  email: z.string().email({ message: "Please enter a valid email address." }).optional().or(z.literal('')),
+  website: z.string().url({ message: "Please enter a valid URL." }).optional().or(z.literal('')),
+  
+  scamType: z.string().min(1, { message: 'Please select a scam type.' }),
+  amountLost: z.coerce.number().min(0, { message: "Amount must be a positive number." }).optional(),
+  incidentDate: z.string().optional(),
+
   scamDetails: z.string().min(20, { message: 'Please provide at least 20 characters of detail.' }),
-  paymentDetails: z.string().optional(),
+
   evidence: z
     .any()
     .refine((file) => !file || file instanceof File, "Invalid file format.")

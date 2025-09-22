@@ -23,10 +23,15 @@ export async function submitScamReport(
     formData: FormData,
 ): Promise<ScamReportFormState> {
     const validatedFields = scamReportSchema.safeParse({
-        instagramId: formData.get('instagramId'),
-        category: formData.get('category'),
+        instagramUsername: formData.get('instagramUsername'),
+        displayName: formData.get('displayName'),
+        phone: formData.get('phone'),
+        email: formData.get('email'),
+        website: formData.get('website'),
+        scamType: formData.get('scamType'),
+        amountLost: formData.get('amountLost'),
+        incidentDate: formData.get('incidentDate'),
         scamDetails: formData.get('scamDetails'),
-        paymentDetails: formData.get('paymentDetails'),
         evidence: formData.get('evidence'),
     });
 
@@ -40,28 +45,31 @@ export async function submitScamReport(
         };
     }
     
-    const { instagramId, category, scamDetails, paymentDetails, evidence } = validatedFields.data;
+    const { instagramUsername, displayName, phone, email, website, scamType, amountLost, incidentDate, scamDetails, evidence } = validatedFields.data;
     
     try {
-        const evidenceDataUri = await toDataURI(evidence);
+        const evidenceDataUri = evidence ? await toDataURI(evidence) : undefined;
         
-        const reportDetails = `Instagram ID: @${instagramId}\nCategory: ${category}\nDetails: ${scamDetails}`;
-        
+        let reportDetails = `Instagram ID: @${instagramUsername}\nCategory: ${scamType}\nDetails: ${scamDetails}`;
+        if (displayName) reportDetails += `\nDisplay Name: ${displayName}`;
+        if (phone) reportDetails += `\nPhone: ${phone}`;
+        if (email) reportDetails += `\nEmail: ${email}`;
+        if (website) reportDetails += `\nWebsite: ${website}`;
+        if (amountLost) reportDetails += `\nAmount Lost: $${amountLost}`;
+        if (incidentDate) reportDetails += `\nIncident Date: ${incidentDate}`;
+
+
         const aiInput: AnalyzeScamReportsInput = {
             reportDetails,
             evidenceImage: evidenceDataUri,
         };
-
-        if (paymentDetails) {
-            aiInput.paymentDetails = paymentDetails;
-        }
         
         const aiResult: AnalyzeScamReportsOutput = await analyzeScamReports(aiInput);
 
         // Store the report after successful analysis
         addScamReport({
-            instagramId,
-            category,
+            instagramId: instagramUsername,
+            category: scamType,
             scamDetails,
             evidenceDataUri: evidenceDataUri
         });
