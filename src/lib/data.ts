@@ -3,11 +3,17 @@ import type { ScamAccount, Testimonial } from './types';
 export const scamAccounts: ScamAccount[] = [
   {
     id: '1',
-    instagramId: '@fake_sneaker_hub',
+    instagramId: '@luxury_fake_bags',
+    displayName: 'Luxury Designer Outlet',
     category: 'Fashion & Apparel',
+    scamType: 'Fake Products',
     status: 'verified_scam',
-    reportCount: 28,
+    reportCount: 47,
     lastReported: '2024-07-28',
+    amountLost: 23450,
+    followers: '125K',
+    lastActive: '3 days ago',
+    verifiedBy: 12,
     testimonials: [
       {
         id: 't1-1',
@@ -27,11 +33,17 @@ export const scamAccounts: ScamAccount[] = [
   },
   {
     id: '2',
-    instagramId: '@gadget_deals_scam',
+    instagramId: '@quick_cash_deals',
+    displayName: 'Electronics Warehouse',
     category: 'Electronics',
+    scamType: 'Never Shipped',
     status: 'verified_scam',
-    reportCount: 15,
+    reportCount: 31,
     lastReported: '2024-07-26',
+    amountLost: 18900,
+    followers: '89K',
+    lastActive: '1 week ago',
+    verifiedBy: 8,
     testimonials: [
       {
         id: 't2-1',
@@ -44,11 +56,17 @@ export const scamAccounts: ScamAccount[] = [
   },
   {
     id: '3',
-    instagramId: '@artisan_jewelry_hoax',
-    category: 'Jewelry & Accessories',
+    instagramId: '@fashion_outlet_2024',
+    displayName: 'Fashion Outlet Store',
+    category: 'Fashion & Apparel',
+    scamType: 'Fake Products',
     status: 'under_investigation',
-    reportCount: 3,
-    lastReported: '2024-07-29',
+    reportCount: 5,
+    lastReported: '2024-08-02',
+    amountLost: 2100,
+    followers: '22K',
+    lastActive: '5 days ago',
+    verifiedBy: 2,
     testimonials: [
       {
         id: 't3-1',
@@ -62,10 +80,16 @@ export const scamAccounts: ScamAccount[] = [
     {
     id: '4',
     instagramId: '@pet_supplies_con',
+    displayName: 'Premium Pet Gear',
     category: 'Pets',
+    scamType: 'Never Shipped',
     status: 'verified_scam',
     reportCount: 42,
     lastReported: '2024-07-20',
+    amountLost: 3120,
+    followers: '45K',
+    lastActive: '2 weeks ago',
+    verifiedBy: 15,
     testimonials: [
         {
             id: 't4-1',
@@ -81,57 +105,6 @@ export const scamAccounts: ScamAccount[] = [
             content: "They are using photos from legitimate stores like Chewy and Petco and pretending it's their product. This is a complete scam operation.",
             evidenceLinks: ['pet2', 'ev5', 'ev19'],
         },
-    ],
-  },
-  {
-    id: '5',
-    instagramId: '@get_rich_quick_guru',
-    category: 'Financial Scams',
-    status: 'verified_scam',
-    reportCount: 56,
-    lastReported: '2024-08-01',
-    testimonials: [
-      {
-        id: 't5-1',
-        author: 'SmartInvest',
-        date: '2024-08-01',
-        content: 'Promised 10x returns on a "guaranteed" crypto investment. I sent them $1,000 in Bitcoin. They showed me a fake dashboard with my "earnings," then demanded more money for "taxes." Took my money and then blocked me.',
-        evidenceLinks: ['finance1', 'ev13', 'ev18'],
-      },
-    ],
-  },
-  {
-    id: '6',
-    instagramId: '@miracle_health_tonic',
-    category: 'Health & Beauty',
-    status: 'under_investigation',
-    reportCount: 8,
-    lastReported: '2024-07-31',
-    testimonials: [
-      {
-        id: 't6-1',
-        author: 'WellnessWatcher',
-        date: '2024-07-31',
-        content: 'Selling a "miracle cure" weight loss tea that is just colored water with laxatives. It made me incredibly sick and I had to see a doctor. Do not buy from them, it is dangerous.',
-        evidenceLinks: ['health1', 'ev16'],
-      },
-    ],
-  },
-  {
-    id: '7',
-    instagramId: '@luxury_decor_deals',
-    category: 'Home Goods',
-    status: 'verified_scam',
-    reportCount: 19,
-    lastReported: '2024-07-29',
-    testimonials: [
-      {
-        id: 't7-1',
-        author: 'HomeBody',
-        date: '2024-07-29',
-        content: 'The "velvet" armchair I received looked nothing like the pictures and was made of cheap microfiber. It broke after a week. They are drop-shipping items from overseas for a huge markup.',
-        evidenceLinks: ['home1', 'ev17'],
-      },
     ],
   },
 ];
@@ -159,7 +132,7 @@ export function addScamReport(report: AddScamReportInput) {
         author: 'Anonymous', // In a real app, this would come from user session
         date: currentDate,
         content: report.scamDetails,
-        evidenceLinks: [report.evidenceDataUri],
+        evidenceLinks: report.evidenceDataUri ? [report.evidenceDataUri] : [],
     };
 
     if (existingAccount) {
@@ -170,11 +143,17 @@ export function addScamReport(report: AddScamReportInput) {
         const newAccount: ScamAccount = {
             id: `${scamAccounts.length + 1}`,
             instagramId: `@${report.instagramId}`,
+            displayName: 'N/A',
             category: report.category,
+            scamType: 'Other',
             status: 'under_investigation',
             reportCount: 1,
             lastReported: currentDate,
             testimonials: [newTestimonial],
+            amountLost: 0,
+            followers: 'N/A',
+            lastActive: 'Just now',
+            verifiedBy: 1,
         };
         scamAccounts.unshift(newAccount);
     }
