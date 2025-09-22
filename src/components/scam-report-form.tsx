@@ -98,7 +98,7 @@ export function ScamReportForm() {
             >
                 <CardHeader>
                     <CardTitle className="font-headline">Scam Details</CardTitle>
-                    <CardDescription>All fields are required. Provide as much detail as possible.</CardDescription>
+                    <CardDescription>All fields are required unless marked optional.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                     <div className="space-y-2">
@@ -116,10 +116,19 @@ export function ScamReportForm() {
                         <Textarea
                             id="scamDetails"
                             name="scamDetails"
-                            placeholder="Describe what happened in detail. Include dates, payment methods, and conversation summaries."
-                            className="min-h-[150px]"
+                            placeholder="Describe what happened in detail. Include dates, conversation summaries, etc."
+                            className="min-h-[120px]"
                             required
-                            minLength={50}
+                            minLength={20}
+                        />
+                    </div>
+
+                    <div className="space-y-2">
+                        <Label htmlFor="paymentDetails">Payment Details (Optional)</Label>
+                        <Input 
+                            id="paymentDetails" 
+                            name="paymentDetails" 
+                            placeholder="e.g., Venmo: @user, CashApp: $user" 
                         />
                     </div>
                     

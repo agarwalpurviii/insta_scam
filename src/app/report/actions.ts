@@ -25,6 +25,7 @@ export async function submitScamReport(
         instagramId: formData.get('instagramId'),
         category: formData.get('category'),
         scamDetails: formData.get('scamDetails'),
+        paymentDetails: formData.get('paymentDetails'),
         evidence: formData.get('evidence'),
     });
 
@@ -37,7 +38,7 @@ export async function submitScamReport(
         };
     }
     
-    const { instagramId, category, scamDetails, evidence } = validatedFields.data;
+    const { instagramId, category, scamDetails, paymentDetails, evidence } = validatedFields.data;
     const reportDetails = `Instagram ID: ${instagramId}\nCategory: ${category}\nDetails: ${scamDetails}`;
     
     const evidenceImage = await toDataURI(evidence);
@@ -45,6 +46,7 @@ export async function submitScamReport(
     try {
         const aiResult: AnalyzeScamReportsOutput = await analyzeScamReports({ 
             reportDetails,
+            paymentDetails,
             evidenceImage,
         });
 

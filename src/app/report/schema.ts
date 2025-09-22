@@ -6,7 +6,8 @@ const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/web
 export const scamReportSchema = z.object({
   instagramId: z.string().min(1, { message: 'Instagram ID is required.' }).startsWith('@', { message: 'Instagram ID must start with @' }),
   category: z.string().min(1, { message: 'Please select a category.' }),
-  scamDetails: z.string().min(50, { message: 'Please provide at least 50 characters of detail.' }),
+  scamDetails: z.string().min(20, { message: 'Please provide at least 20 characters of detail.' }),
+  paymentDetails: z.string().optional(),
   evidence: z
     .instanceof(File)
     .refine((file) => file?.size > 0, "Evidence image is required.")

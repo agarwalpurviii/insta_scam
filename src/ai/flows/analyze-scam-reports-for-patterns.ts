@@ -15,6 +15,7 @@ const AnalyzeScamReportsInputSchema = z.object({
   reportDetails: z
     .string()
     .describe('Detailed report of scam activity including user testimonials, scam details, and evidence.'),
+  paymentDetails: z.string().optional().describe('Payment details if available (e.g., payment app, username).'),
   evidenceImage: z
     .string()
     .describe(
@@ -46,6 +47,7 @@ const prompt = ai.definePrompt({
   Return whether it is a potential scam and provide your reasoning.
 
   Report Details: {{{reportDetails}}}
+  {{#if paymentDetails}}Payment Details: {{{paymentDetails}}}{{/if}}
   Evidence Image:
   {{media url=evidenceImage}}
   `,
