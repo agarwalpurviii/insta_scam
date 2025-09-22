@@ -32,17 +32,19 @@ export function HomeTestimonialCard({ testimonial }: HomeTestimonialCardProps) {
         "bg-card/80 border-2 border-transparent relative overflow-hidden p-6 flex flex-col h-full",
         isLoss && "border-l-primary"
     )}>
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
-        <div>
-            <div className="flex items-center gap-2">
-                <h3 className="font-bold text-lg">{testimonial.name}</h3>
-                <span className="flex items-center gap-1 text-xs text-muted-foreground bg-secondary px-2 py-0.5 rounded-full">
-                    <CheckCircle className="h-3 w-3" /> Verified
-                </span>
+      <div className="flex flex-col sm:items-start gap-2 mb-4">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between w-full gap-2">
+            <div>
+                <div className="flex items-center gap-2">
+                    <h3 className="font-bold text-lg">{testimonial.name}</h3>
+                    <span className="flex items-center gap-1 text-xs text-muted-foreground bg-secondary px-2 py-0.5 rounded-full">
+                        <CheckCircle className="h-3 w-3" /> Verified
+                    </span>
+                </div>
+                <p className="text-sm text-muted-foreground">{testimonial.location}</p>
             </div>
-            <p className="text-sm text-muted-foreground">{testimonial.location}</p>
+            <StarRating rating={testimonial.rating} />
         </div>
-        <StarRating rating={testimonial.rating} />
       </div>
 
       <CardContent className="p-0 flex-grow">
